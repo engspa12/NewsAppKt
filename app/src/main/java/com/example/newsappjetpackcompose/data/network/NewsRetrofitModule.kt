@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.network
+package com.example.newsappjetpackcompose.data.network
 
 import dagger.Module
 import dagger.Provides

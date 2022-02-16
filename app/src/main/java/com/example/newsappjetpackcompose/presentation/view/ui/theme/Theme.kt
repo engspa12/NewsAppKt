@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.ui.theme
+package com.example.newsappjetpackcompose.presentation.view.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

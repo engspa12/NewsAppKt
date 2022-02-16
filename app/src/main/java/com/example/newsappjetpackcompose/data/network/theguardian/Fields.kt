@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.network.theguardian
+package com.example.newsappjetpackcompose.data.network.theguardian
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -6,11 +6,11 @@ import com.google.gson.annotations.SerializedName
 data class Fields(
     @SerializedName("headline")
     @Expose
-    val headline: String,
+    val headline: String?,
     @SerializedName("byline")
     @Expose
-    val byline: String,
+    val byline: String?,
     @SerializedName("thumbnail")
     @Expose
-    val thumbnail: String
+    val thumbnail: String?
 )

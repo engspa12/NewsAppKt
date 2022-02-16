@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.entities
+package com.example.newsappjetpackcompose.domain.model
 
 data class Article(
     val title: String,

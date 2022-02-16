@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NewsAppJetpackCompose</string>
+    <string name="title_activity_welcome" translatable="false">WelcomeActivity</string>
 </resources>
