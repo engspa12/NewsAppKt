@@ -1,4 +1,28 @@
 <resources>
-    <string name="app_name">NewsAppJetpackCompose</string>
-    <string name="title_activity_welcome" translatable="false">WelcomeActivity</string>
+    <string name="app_name">NewsAppKotlin</string>
+    <string name="welcome_title">Welcome to NewsApp</string>
+    <string name="welcome_message">Enter a key word in the text field and tap on the Search News button to look for related news</string>
+    <!--Text for search button-->
+    <string name="search_button">Search News</string>
+    <!--No internet connection message-->
+    <string name="no_internet_connection">There is no Internet Connection</string>
+    <!--Message when no articles are available-->
+    <string name="no_data">No Articles Found</string>
+    <string name="search_hint">Type key word</string>
+    <string name="by_unknown_author_text">By unknown author</string>
+    <string name="order_by_query_key">order-by</string>
+    <string name="show_fields_query_key">show-fields</string>
+    <string name="page_size_query_key">page-size</string>
+    <string name="api_key_query_key">api-key</string>
+    <string name="no_image_available_thumbnail_field">No image available</string>
+    <string name="empty_text_message">You need to enter a word or phrase to search</string>
+    <string name="unknown_release_date_text">Unknown Release Date</string>
+    <string name="unknown_title_message">Unknown title</string>
+    <string name="unknown_section_text">Unknown section</string>
+
+    <string name="relevant_news_menu">Relevant News</string>
+    <string name="newest_news_menu">Latest News</string>
+    <string name="search_relevant_news_text">Search Relevant News</string>
+    <string name="search_latest_news_text">Search Latest News</string>
+    <string name="error_message">There was an error while retrieving the data.\nPlease try again later.</string>
 </resources>

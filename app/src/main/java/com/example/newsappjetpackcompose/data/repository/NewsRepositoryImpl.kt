@@ -11,6 +11,7 @@ class NewsRepositoryImpl @Inject constructor(
     private val newsService: NewsService,
 ): NewsRepository {
 
+    /*Simulate the data in Cached*/
     private val results = ArrayList<Result>()
     private var lastTimeStamp: Long = 0
 

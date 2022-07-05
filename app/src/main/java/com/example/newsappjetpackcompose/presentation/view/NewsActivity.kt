@@ -1,43 +1,24 @@
 package com.example.newsappjetpackcompose.presentation.view
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.newsappjetpackcompose.presentation.view.ui.theme.NewsAppJetpackComposeTheme
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import com.example.newsappjetpackcompose.databinding.ActivityNewsBinding
 
-class WelcomeActivity : ComponentActivity() {
+class NewsActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityNewsBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            NewsAppJetpackComposeTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting2("Android")
-                }
-            }
-        }
+        binding = ActivityNewsBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+        setObservers()
     }
-}
 
-@Composable
-fun Greeting2(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview2() {
-    NewsAppJetpackComposeTheme {
-        Greeting2("Android")
+    private fun setObservers(){
+        val searchTerm = intent.getStringExtra("search")
+        Log.d("NewsActivity", "The search term is $searchTerm")
     }
 }

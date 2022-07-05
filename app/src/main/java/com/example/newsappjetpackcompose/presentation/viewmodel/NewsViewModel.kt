@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.presentation.presenter
+package com.example.newsappjetpackcompose.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
