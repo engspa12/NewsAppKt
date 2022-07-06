@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/welcome_background"
-    tools:context=".presentation.view.activity.WelcomeActivity">
+    tools:context=".presentation.view.appcompat.activity.WelcomeActivity">
 
     <TextView
         android:id="@+id/welcomeTitleTV"

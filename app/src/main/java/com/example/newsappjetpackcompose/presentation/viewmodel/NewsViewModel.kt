@@ -7,6 +7,7 @@ import com.example.newsappjetpackcompose.data.network.response.Result
 import com.example.newsappjetpackcompose.domain.interactor.NewsInteractor
 import com.example.newsappjetpackcompose.domain.model.ArticleDomain
 import com.example.newsappjetpackcompose.presentation.model.ArticleView
+import com.example.newsappjetpackcompose.presentation.state.ArticlesUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -23,15 +24,14 @@ class NewsViewModel @Inject constructor(
     private var subscription: Disposable? = null
     private var articles: List<ArticleView> = emptyList()
 
-    private val _errorMessage = MutableLiveData<String?>()
-    val errorMessage: LiveData<String?>
-        get() = _errorMessage
-
-    private val _listNewsArticles = MutableLiveData<List<ArticleView>>()
-    val listNewsArticles: LiveData<List<ArticleView>>
-        get() = _listNewsArticles
+    private val _uiState = MutableLiveData<ArticlesUIState>()
+    val uiState: LiveData<ArticlesUIState>
+        get() = _uiState
 
     fun getNews(searchTerm: String, sortType: String) {
+
+        _uiState.value = ArticlesUIState.Loading
+
         subscription = newsInteractor.sendData(searchTerm, sortType)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -41,11 +41,11 @@ class NewsViewModel @Inject constructor(
                 }
 
                 override fun onError(e: Throwable) {
-                    _errorMessage.value = e.message
+                    _uiState.value = ArticlesUIState.Error(e.message ?: "")
                 }
 
                 override fun onComplete() {
-                    _listNewsArticles.value = articles
+                    _uiState.value = ArticlesUIState.Success(articles)
                 }
             })
     }

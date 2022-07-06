@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.presentation.view.adapter
+package com.example.newsappjetpackcompose.presentation.view.appcompat.adapter
 
 import android.content.Intent
 import android.net.Uri

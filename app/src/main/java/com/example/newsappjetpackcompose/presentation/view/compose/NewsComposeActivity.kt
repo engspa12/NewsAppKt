@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.presentation.view.activity
+package com.example.newsappjetpackcompose.presentation.view.compose
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.newsappjetpackcompose.presentation.view.ui.theme.NewsAppJetpackComposeTheme
+import com.example.newsappjetpackcompose.presentation.view.compose.ui.theme.NewsAppJetpackComposeTheme
 
 class NewsComposeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
