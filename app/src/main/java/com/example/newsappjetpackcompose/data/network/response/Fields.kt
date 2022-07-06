@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.data.network.theguardian
+package com.example.newsappjetpackcompose.data.network.response
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

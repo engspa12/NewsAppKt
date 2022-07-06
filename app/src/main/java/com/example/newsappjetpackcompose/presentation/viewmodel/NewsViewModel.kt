@@ -3,9 +3,10 @@ package com.example.newsappjetpackcompose.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.newsappjetpackcompose.data.network.theguardian.Result
+import com.example.newsappjetpackcompose.data.network.response.Result
 import com.example.newsappjetpackcompose.domain.interactor.NewsInteractor
-import com.example.newsappjetpackcompose.domain.model.Article
+import com.example.newsappjetpackcompose.domain.model.ArticleDomain
+import com.example.newsappjetpackcompose.presentation.model.ArticleView
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -20,37 +21,27 @@ class NewsViewModel @Inject constructor(
 ): ViewModel() {
 
     private var subscription: Disposable? = null
-    private var articles = ArrayList<Article>()
+    private var articles: List<ArticleView> = emptyList()
 
     private val _errorMessage = MutableLiveData<String?>()
     val errorMessage: LiveData<String?>
         get() = _errorMessage
 
-    private val _listNewsArticles = MutableLiveData<List<Article>?>()
-    val listNewsArticles: LiveData<List<Article>?>
+    private val _listNewsArticles = MutableLiveData<List<ArticleView>>()
+    val listNewsArticles: LiveData<List<ArticleView>>
         get() = _listNewsArticles
 
     fun getNews(searchTerm: String, sortType: String) {
         subscription = newsInteractor.sendData(searchTerm, sortType)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeWith(object : DisposableObserver<Result>() {
-                override fun onNext(result: Result) {
-                    val sectionName = result.sectionName
-                    val webUrl = result.webUrl
-                    val publicationDate = result.webPublicationDate.substring(0, 10)
-
-                    val fields = result.fields
-
-                    val author = if(fields.byline.isNullOrEmpty()) "Unknown Author" else fields.byline
-                    val webTitle = if(fields.headline.isNullOrEmpty()) "Unknown Title" else fields.headline
-                    val thumbnailUrl = if(fields.thumbnail.isNullOrEmpty()) "No image available" else fields.thumbnail
-
-                    articles.add(Article(webTitle, sectionName, author, publicationDate, webUrl, thumbnailUrl))
+            .subscribeWith(object : DisposableObserver<List<ArticleView>>() {
+                override fun onNext(list: List<ArticleView>) {
+                    articles = list
                 }
 
                 override fun onError(e: Throwable) {
-                    _errorMessage.value = "An error occurred during data retrieval"
+                    _errorMessage.value = e.message
                 }
 
                 override fun onComplete() {
@@ -59,9 +50,14 @@ class NewsViewModel @Inject constructor(
             })
     }
 
-    fun rxJavaUnsubscribe() {
+    private fun rxJavaUnsubscribe() {
         if(subscription != null && !subscription!!.isDisposed){
             subscription!!.dispose();
         }
+    }
+
+    override fun onCleared() {
+        rxJavaUnsubscribe()
+        super.onCleared()
     }
 }

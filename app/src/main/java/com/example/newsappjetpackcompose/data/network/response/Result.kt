@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.data.network.theguardian
+package com.example.newsappjetpackcompose.data.network.response
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -6,49 +6,49 @@ import com.google.gson.annotations.SerializedName
 data class Result(
     @SerializedName("id")
     @Expose
-    var id: String,
+    var id: String?,
 
     @SerializedName("type")
     @Expose
-    val type: String,
+    val type: String?,
 
     @SerializedName("sectionId")
     @Expose
-    val sectionId: String,
+    val sectionId: String?,
 
     @SerializedName("sectionName")
     @Expose
-    val sectionName: String,
+    val sectionName: String?,
 
     @SerializedName("webPublicationDate")
     @Expose
-    val webPublicationDate: String,
+    val webPublicationDate: String?,
 
     @SerializedName("webTitle")
     @Expose
-    val webTitle: String,
+    val webTitle: String?,
 
     @SerializedName("webUrl")
     @Expose
-    val webUrl: String,
+    val webUrl: String?,
 
     @SerializedName("apiUrl")
     @Expose
-    val apiUrl: String,
+    val apiUrl: String?,
 
     @SerializedName("fields")
     @Expose
-    val fields: Fields,
+    val fields: Fields?,
 
     @SerializedName("isHosted")
     @Expose
-    val isHosted: Boolean,
+    val isHosted: Boolean?,
 
     @SerializedName("pillarId")
     @Expose
-    val pillarId: String,
+    val pillarId: String?,
 
     @SerializedName("pillarName")
     @Expose
-    val pillarName: String
+    val pillarName: String?
 )

@@ -13,11 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsAppJetpackCompose" >
         <activity
-            android:name=".presentation.view.NewsActivity"
+            android:name=".presentation.view.activity.NewsActivity"
             android:exported="false"
             android:theme="@style/Theme.NewsApp"/>
         <activity
-            android:name=".presentation.view.WelcomeActivity"
+            android:name=".presentation.view.activity.WelcomeActivity"
             android:exported="true"
             android:theme="@style/Theme.NewsApp">
             <intent-filter>
@@ -26,10 +26,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.view.NewsComposeActivity"
+            android:name=".presentation.view.activity.NewsComposeActivity"
             android:exported="false"
             android:theme="@style/Theme.NewsAppJetpackCompose">
         </activity>
     </application>
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:mimeType="text/plain"/>
+        </intent>
+    </queries>
 
 </manifest>

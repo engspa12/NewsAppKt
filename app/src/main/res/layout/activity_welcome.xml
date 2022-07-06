@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/welcome_background"
-    tools:context=".presentation.view.WelcomeActivity">
+    tools:context=".presentation.view.activity.WelcomeActivity">
 
     <TextView
         android:id="@+id/welcomeTitleTV"
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:backgroundTint="#22882F"
-        android:text="@string/search_latest_news_text"
+        android:text="@string/search_relevant_news_text"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"

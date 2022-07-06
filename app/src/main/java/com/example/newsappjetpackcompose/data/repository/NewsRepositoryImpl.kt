@@ -2,16 +2,20 @@ package com.example.newsappjetpackcompose.data.repository
 
 import com.example.newsappjetpackcompose.BuildConfig
 import com.example.newsappjetpackcompose.data.network.NewsService
-import com.example.newsappjetpackcompose.data.network.theguardian.Result
+import com.example.newsappjetpackcompose.data.network.response.ArticleNetworkMapper
+import com.example.newsappjetpackcompose.data.network.response.Result
+import com.example.newsappjetpackcompose.domain.helper.NetworkMapper
+import com.example.newsappjetpackcompose.domain.model.ArticleDomain
 import com.example.newsappjetpackcompose.domain.repository.NewsRepository
 import io.reactivex.Observable
 import javax.inject.Inject
 
 class NewsRepositoryImpl @Inject constructor(
     private val newsService: NewsService,
+    private val networkMapper: NetworkMapper<Result, ArticleDomain>
 ): NewsRepository {
 
-    /*Simulate the data in Cached*/
+    /*Simulate the data in Cache*/
     private val results = ArrayList<Result>()
     private var lastTimeStamp: Long = 0
 
@@ -22,7 +26,7 @@ class NewsRepositoryImpl @Inject constructor(
         private const val FILTER_RESULTS = "headline,byline,thumbnail"
     }
 
-    override fun getNewsData(searchTerm: String, sortType: String): Observable<Result> {
+    override fun getNewsData(searchTerm: String, sortType: String): Observable<List<ArticleDomain>> {
         //Map for querying the API
         val parameters = HashMap<String, String>()
 
@@ -32,23 +36,30 @@ class NewsRepositoryImpl @Inject constructor(
         parameters["page-size"] = NUMBER_OF_ARTICLES
         parameters["api-key"] = API_KEY
 
-        return getNewsDataFromCache().switchIfEmpty(getNewsDataFromNetwork(parameters))
+        val data = getNewsDataFromCache().switchIfEmpty(getNewsDataFromNetwork(parameters))
+
+        return data.concatMap { responseItems ->
+            val listDomainItems = responseItems.map {
+                networkMapper.mapToDomainModel(it)
+            }
+            Observable.just(listDomainItems)
+        }
     }
 
-    override fun getNewsDataFromNetwork(queryParams: Map<String, String>): Observable<Result> {
+    private fun getNewsDataFromNetwork(queryParams: Map<String, String>): Observable<List<Result>> {
 
         val newsApiObservable = newsService.getNews(queryParams)
 
         return newsApiObservable.concatMap { newsSearch ->
             Observable.just(newsSearch.response)
         }.concatMap { response ->
-            Observable.fromIterable(response.results)
+            Observable.just(response.results)
         }
     }
 
-    override fun getNewsDataFromCache(): Observable<Result> {
+    private fun getNewsDataFromCache(): Observable<List<Result>> {
         return if(isUpdated()){
-            Observable.fromIterable(results)
+            Observable.just(results)
         } else {
             lastTimeStamp = System.currentTimeMillis()
             results.clear()

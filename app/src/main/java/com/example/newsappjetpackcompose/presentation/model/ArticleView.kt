@@ -1,6 +1,6 @@
-package com.example.newsappjetpackcompose.domain.model
+package com.example.newsappjetpackcompose.presentation.model
 
-data class Article(
+data class ArticleView(
     val title: String,
     val sectionName: String,
     val author: String,

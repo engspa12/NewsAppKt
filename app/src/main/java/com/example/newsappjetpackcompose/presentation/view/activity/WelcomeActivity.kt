@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.presentation.view
+package com.example.newsappjetpackcompose.presentation.view.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
