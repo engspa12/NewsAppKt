@@ -3,9 +3,7 @@ package com.example.newsappjetpackcompose.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.newsappjetpackcompose.data.network.response.Result
 import com.example.newsappjetpackcompose.domain.interactor.NewsInteractor
-import com.example.newsappjetpackcompose.domain.model.ArticleDomain
 import com.example.newsappjetpackcompose.presentation.model.ArticleView
 import com.example.newsappjetpackcompose.presentation.state.ArticlesUIState
 import dagger.hilt.android.lifecycle.HiltViewModel

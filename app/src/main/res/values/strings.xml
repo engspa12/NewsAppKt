@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">NewsAppKt</string>
-    <string name="welcome_title">Welcome to NewsApp</string>
+    <string name="welcome_title">Welcome to NewsAppKt</string>
     <string name="welcome_message">Enter a key word in the text field and tap on the Search News button to look for related news</string>
     <!--Text for search button-->
     <string name="search_button">Search News</string>

@@ -1,6 +1,6 @@
 package com.example.newsappjetpackcompose.di
 
-import com.example.newsappjetpackcompose.data.network.NewsService
+import com.example.newsappjetpackcompose.data.network.datasource.NewsService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

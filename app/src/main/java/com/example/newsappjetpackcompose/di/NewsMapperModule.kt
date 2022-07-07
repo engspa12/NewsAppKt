@@ -1,7 +1,7 @@
 package com.example.newsappjetpackcompose.di
 
 import com.example.newsappjetpackcompose.data.network.response.ArticleNetworkMapper
-import com.example.newsappjetpackcompose.data.network.response.Result
+import com.example.newsappjetpackcompose.data.network.response.ArticleNetwork
 import com.example.newsappjetpackcompose.domain.helper.NetworkMapper
 import com.example.newsappjetpackcompose.domain.model.ArticleDomain
 import dagger.Module
@@ -14,7 +14,7 @@ import dagger.hilt.components.SingletonComponent
 object NewsMapperModule {
 
     @Provides
-    fun provideMapper(): NetworkMapper<Result, ArticleDomain> {
+    fun provideMapper(): NetworkMapper<ArticleNetwork, ArticleDomain> {
         return ArticleNetworkMapper()
     }
 }

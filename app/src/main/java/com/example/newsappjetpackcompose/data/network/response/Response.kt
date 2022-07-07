@@ -30,5 +30,5 @@ data class Response(
     val orderBy: String?,
     @SerializedName("results")
     @Expose
-    val results: List<Result>?
+    val articlesNetwork: List<ArticleNetwork>?
 )

@@ -3,8 +3,8 @@ package com.example.newsappjetpackcompose.data.network.response
 import com.example.newsappjetpackcompose.domain.helper.NetworkMapper
 import com.example.newsappjetpackcompose.domain.model.ArticleDomain
 
-class ArticleNetworkMapper: NetworkMapper<Result,ArticleDomain> {
-    override fun mapToDomainModel(dto: Result): ArticleDomain {
+class ArticleNetworkMapper: NetworkMapper<ArticleNetwork,ArticleDomain> {
+    override fun mapToDomainModel(dto: ArticleNetwork): ArticleDomain {
         val sectionName = dto.sectionName
         val webUrl = dto.webUrl
         val publicationDate = dto.webPublicationDate?.substring(0, 10)

@@ -1,9 +1,8 @@
 package com.example.newsappjetpackcompose.data.repository
 
 import com.example.newsappjetpackcompose.BuildConfig
-import com.example.newsappjetpackcompose.data.network.NewsService
-import com.example.newsappjetpackcompose.data.network.response.ArticleNetworkMapper
-import com.example.newsappjetpackcompose.data.network.response.Result
+import com.example.newsappjetpackcompose.data.network.datasource.NewsService
+import com.example.newsappjetpackcompose.data.network.response.ArticleNetwork
 import com.example.newsappjetpackcompose.domain.helper.NetworkMapper
 import com.example.newsappjetpackcompose.domain.model.ArticleDomain
 import com.example.newsappjetpackcompose.domain.repository.NewsRepository
@@ -12,11 +11,11 @@ import javax.inject.Inject
 
 class NewsRepositoryImpl @Inject constructor(
     private val newsService: NewsService,
-    private val networkMapper: NetworkMapper<Result, ArticleDomain>
+    private val networkMapper: NetworkMapper<ArticleNetwork, ArticleDomain>
 ): NewsRepository {
 
     /*Simulate the data in Cache*/
-    private val results = ArrayList<Result>()
+    private var listArticlesNetwork: List<ArticleNetwork>? = emptyList()
     private var lastTimeStamp: Long = 0
 
     companion object {
@@ -46,23 +45,24 @@ class NewsRepositoryImpl @Inject constructor(
         }
     }
 
-    private fun getNewsDataFromNetwork(queryParams: Map<String, String>): Observable<List<Result>> {
+    private fun getNewsDataFromNetwork(queryParams: Map<String, String>): Observable<List<ArticleNetwork>> {
 
         val newsApiObservable = newsService.getNews(queryParams)
 
         return newsApiObservable.concatMap { newsSearch ->
             Observable.just(newsSearch.response)
         }.concatMap { response ->
-            Observable.just(response.results)
+            listArticlesNetwork = response.articlesNetwork
+            Observable.just(response.articlesNetwork)
         }
     }
 
-    private fun getNewsDataFromCache(): Observable<List<Result>> {
+    private fun getNewsDataFromCache(): Observable<List<ArticleNetwork>> {
         return if(isUpdated()){
-            Observable.just(results)
+            Observable.just(listArticlesNetwork)
         } else {
             lastTimeStamp = System.currentTimeMillis()
-            results.clear()
+            listArticlesNetwork = emptyList()
             Observable.empty()
         }
     }

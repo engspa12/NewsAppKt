@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.data.network
+package com.example.newsappjetpackcompose.data.network.datasource
 
 import com.example.newsappjetpackcompose.data.network.response.NewsSearch
 import io.reactivex.Observable

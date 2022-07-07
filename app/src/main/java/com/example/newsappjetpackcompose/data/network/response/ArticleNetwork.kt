@@ -3,7 +3,7 @@ package com.example.newsappjetpackcompose.data.network.response
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class Result(
+data class ArticleNetwork(
     @SerializedName("id")
     @Expose
     var id: String?,
