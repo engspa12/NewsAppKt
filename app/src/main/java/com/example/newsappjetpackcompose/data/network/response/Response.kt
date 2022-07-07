@@ -1,34 +1,26 @@
 package com.example.newsappjetpackcompose.data.network.response
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class Response(
-    @SerializedName("status")
-    @Expose
+    @Json(name = "status")
     val status: String?,
-    @SerializedName("userTier")
-    @Expose
+    @Json(name = "userTier")
     val userTier: String?,
-    @SerializedName("total")
-    @Expose
+    @Json(name = "total")
     val total: Int?,
-    @SerializedName("startIndex")
-    @Expose
+    @Json(name = "startIndex")
     val startIndex: Int?,
-    @SerializedName("pageSize")
-    @Expose
+    @Json(name = "pageSize")
     val pageSize: Int?,
-    @SerializedName("currentPage")
-    @Expose
+    @Json(name = "currentPage")
     val currentPage: Int?,
-    @SerializedName("pages")
-    @Expose
+    @Json(name = "pages")
     val pages: Int?,
-    @SerializedName("orderBy")
-    @Expose
+    @Json(name = "orderBy")
     val orderBy: String?,
-    @SerializedName("results")
-    @Expose
+    @Json(name = "results")
     val articlesNetwork: List<ArticleNetwork>?
 )

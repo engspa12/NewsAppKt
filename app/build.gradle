@@ -74,11 +74,12 @@ dependencies {
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     //For JSON Parsing in Retrofit
-    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.5.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
 
-    //Gson
-    implementation 'com.google.code.gson:gson:2.8.9'
+    //Moshi
+    implementation 'com.squareup.moshi:moshi:1.13.0'
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.13.0'
 
     //RxJava
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'

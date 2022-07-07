@@ -1,13 +1,14 @@
 package com.example.newsappjetpackcompose.di
 
 import com.example.newsappjetpackcompose.data.network.datasource.NewsService
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -20,18 +21,22 @@ class NewsRetrofitModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(baseUrl: String): Retrofit {
+    fun provideMoshi() = Moshi.Builder().build()
+
+    @Singleton
+    @Provides
+    fun provideRetrofit(baseUrl: String, mosh: Moshi): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(mosh))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     }
 
     @Singleton
     @Provides
-    fun provideNewsService(): NewsService {
-        return provideRetrofit(BASE_URL).create(NewsService::class.java)
+    fun provideNewsService(mosh: Moshi): NewsService {
+        return provideRetrofit(BASE_URL, mosh).create(NewsService::class.java)
     }
 
 }

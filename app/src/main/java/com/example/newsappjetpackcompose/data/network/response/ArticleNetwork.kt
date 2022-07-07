@@ -1,54 +1,43 @@
 package com.example.newsappjetpackcompose.data.network.response
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class ArticleNetwork(
-    @SerializedName("id")
-    @Expose
+    @Json(name = "id")
     var id: String?,
 
-    @SerializedName("type")
-    @Expose
+    @Json(name = "type")
     val type: String?,
 
-    @SerializedName("sectionId")
-    @Expose
+    @Json(name = "sectionId")
     val sectionId: String?,
 
-    @SerializedName("sectionName")
-    @Expose
+    @Json(name = "sectionName")
     val sectionName: String?,
 
-    @SerializedName("webPublicationDate")
-    @Expose
+    @Json(name = "webPublicationDate")
     val webPublicationDate: String?,
 
-    @SerializedName("webTitle")
-    @Expose
+    @Json(name = "webTitle")
     val webTitle: String?,
 
-    @SerializedName("webUrl")
-    @Expose
+    @Json(name = "webUrl")
     val webUrl: String?,
 
-    @SerializedName("apiUrl")
-    @Expose
+    @Json(name = "apiUrl")
     val apiUrl: String?,
 
-    @SerializedName("fields")
-    @Expose
+    @Json(name = "fields")
     val fields: Fields?,
 
-    @SerializedName("isHosted")
-    @Expose
+    @Json(name = "isHosted")
     val isHosted: Boolean?,
 
-    @SerializedName("pillarId")
-    @Expose
+    @Json(name = "pillarId")
     val pillarId: String?,
 
-    @SerializedName("pillarName")
-    @Expose
+    @Json(name = "pillarName")
     val pillarName: String?
 )

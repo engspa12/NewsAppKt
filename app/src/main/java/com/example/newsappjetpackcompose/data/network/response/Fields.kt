@@ -1,16 +1,14 @@
 package com.example.newsappjetpackcompose.data.network.response
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class Fields(
-    @SerializedName("headline")
-    @Expose
+    @Json(name = "headline")
     val headline: String?,
-    @SerializedName("byline")
-    @Expose
+    @Json(name = "byline")
     val byline: String?,
-    @SerializedName("thumbnail")
-    @Expose
+    @Json(name = "thumbnail")
     val thumbnail: String?
 )
