@@ -11,6 +11,8 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableObserver
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
 import javax.inject.Inject
 
@@ -22,14 +24,11 @@ class NewsViewModel @Inject constructor(
     private var subscription: Disposable? = null
     private var articles: List<ArticleView> = emptyList()
 
-    private val _uiState = MutableLiveData<ArticlesUIState>()
-    val uiState: LiveData<ArticlesUIState>
+    private val _uiState = MutableStateFlow<ArticlesUIState>(ArticlesUIState.Loading)
+    val uiState: StateFlow<ArticlesUIState>
         get() = _uiState
 
     fun getNews(searchTerm: String, sortType: String) {
-
-        _uiState.value = ArticlesUIState.Loading
-
         subscription = newsInteractor.sendData(searchTerm, sortType)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

@@ -4,12 +4,16 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsappjetpackcompose.databinding.ActivityNewsBinding
 import com.example.newsappjetpackcompose.presentation.state.ArticlesUIState
 import com.example.newsappjetpackcompose.presentation.view.appcompat.adapter.ListArticlesAdapter
 import com.example.newsappjetpackcompose.presentation.viewmodel.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class NewsActivity : AppCompatActivity() {
@@ -45,18 +49,22 @@ class NewsActivity : AppCompatActivity() {
 
     private fun setObserver(){
 
-        viewModel.uiState.observe(this) { state ->
-            when(state) {
-                is ArticlesUIState.Success -> {
-                    adapter.setList(state.data)
-                    showListArticles()
-                }
-                is ArticlesUIState.Error -> {
-                    binding.emptyView.text = state.errorMessage
-                    showErrorMessage()
-                }
-                is ArticlesUIState.Loading -> {
-                    showProgressBar()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { state ->
+                    when(state) {
+                        is ArticlesUIState.Success -> {
+                            adapter.setList(state.data)
+                            showListArticles()
+                        }
+                        is ArticlesUIState.Error -> {
+                            binding.emptyView.text = state.errorMessage
+                            showErrorMessage()
+                        }
+                        is ArticlesUIState.Loading -> {
+                            showProgressBar()
+                        }
+                    }
                 }
             }
         }
