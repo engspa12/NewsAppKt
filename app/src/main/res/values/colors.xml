@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="welcome_background">#3A3CB7</color>
     <color name="appbar_background">#7A8BEA</color>
+    <color name="item_background">#FFDDAA</color>
+    <color name="item_border">#23DDAA</color>
 </resources>

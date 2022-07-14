@@ -24,7 +24,7 @@ class NewsViewModel @Inject constructor(
     private var subscription: Disposable? = null
     private var articles: List<ArticleView> = emptyList()
 
-    private val _uiState = MutableStateFlow<ArticlesUIState>(ArticlesUIState.Loading)
+    private val _uiState = MutableStateFlow<ArticlesUIState>(ArticlesUIState.Loading("Loading News..."))
     val uiState: StateFlow<ArticlesUIState>
         get() = _uiState
 

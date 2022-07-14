@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.databinding.ActivityWelcomeBinding
+import com.example.newsappjetpackcompose.presentation.view.compose.NewsComposeActivity
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -23,7 +24,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     private fun setSeachButton(){
         binding.searchButton.setOnClickListener {
-            val intent = Intent(this, NewsActivity::class.java).apply {
+            val intent = Intent(this, NewsComposeActivity::class.java).apply {
                 putExtra("search", binding.searchEt.text.toString().trim())
                 putExtra("sort_type", sortType)
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
