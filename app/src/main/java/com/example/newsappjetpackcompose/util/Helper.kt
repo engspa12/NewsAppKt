@@ -4,5 +4,6 @@ import android.content.Context
 
 interface Helper {
 
-    fun isOnline(context: Context): Boolean
+    fun isOnline(): Boolean
+    fun getNoInternetMessage(): String
 }

@@ -25,4 +25,5 @@
     <string name="search_relevant_news_text">Search Relevant News</string>
     <string name="search_latest_news_text">Search Latest News</string>
     <string name="error_message">There was an error while retrieving the data.\nPlease try again later.</string>
+    <string name="welcome_image_content_description">Welcome Image Message</string>
 </resources>

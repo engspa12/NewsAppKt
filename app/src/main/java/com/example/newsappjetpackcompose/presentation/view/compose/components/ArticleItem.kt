@@ -56,15 +56,15 @@ fun ArticleItem(
             modifier = Modifier
                 .fillMaxHeight()
                 .requiredWidth(width = 120.dp)
-                .background(colorResource(id = R.color.item_border))
+                .background(color = MaterialTheme.colors.onSurface)
                 .padding(4.dp),
             error = ImageBitmap.imageResource(R.drawable.no_image_available)
         )
         Column(
             modifier = Modifier
                 .fillMaxHeight()
-                .background(colorResource(id = R.color.item_background))
-                .border(width = 4.dp, color = colorResource(id = R.color.item_border))
+                .background(color = MaterialTheme.colors.surface)
+                .border(width = 4.dp, color = MaterialTheme.colors.onSurface)
                 .padding(8.dp)
         ) {
             Text(

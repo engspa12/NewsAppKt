@@ -5,6 +5,10 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.newsappjetpackcompose.presentation.view.compose.screens.ArticlesScreen
@@ -18,18 +22,23 @@ class NewsComposeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             NewsAppJetpackComposeTheme {
-                val searchTerm = intent.getStringExtra("search") ?: ""
-                val sortType = intent.getStringExtra("sort_type") ?: ""
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colors.background
+                ) {
+                    val searchTerm = intent.getStringExtra("search") ?: ""
+                    val sortType = intent.getStringExtra("sort_type") ?: ""
 
-                val viewModel: NewsViewModel = viewModel()
-                val context = LocalContext.current
+                    val viewModel: NewsViewModel = viewModel()
+                    val context = LocalContext.current
 
-                ArticlesScreen(
-                    context = context,
-                    viewModel = viewModel,
-                    searchTerm = searchTerm,
-                    sortType = sortType
-                )
+                    ArticlesScreen(
+                        context = context,
+                        viewModel = viewModel,
+                        searchTerm = searchTerm,
+                        sortType = sortType
+                    )
+                }
             }
         }
     }
