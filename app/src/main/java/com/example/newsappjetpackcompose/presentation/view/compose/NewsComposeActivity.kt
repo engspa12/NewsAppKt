@@ -1,7 +1,5 @@
 package com.example.newsappjetpackcompose.presentation.view.compose
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.newsappjetpackcompose.presentation.view.compose.screens.ArticlesScreen
-import com.example.newsappjetpackcompose.presentation.view.compose.ui.theme.NewsAppJetpackComposeTheme
+import com.example.newsappjetpackcompose.presentation.view.compose.ui.theme.NewsAppKtTheme
 import com.example.newsappjetpackcompose.presentation.viewmodel.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,7 +19,7 @@ class NewsComposeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            NewsAppJetpackComposeTheme {
+            NewsAppKtTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background

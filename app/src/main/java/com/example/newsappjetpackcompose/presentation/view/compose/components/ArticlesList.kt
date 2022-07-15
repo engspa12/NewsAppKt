@@ -1,19 +1,17 @@
 package com.example.newsappjetpackcompose.presentation.view.compose.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.newsappjetpackcompose.presentation.model.ArticleView
-import com.example.newsappjetpackcompose.presentation.view.compose.ui.theme.NewsAppJetpackComposeTheme
+import com.example.newsappjetpackcompose.presentation.view.compose.ui.theme.NewsAppKtTheme
 
 @Composable
 fun ArticlesList(
@@ -40,7 +38,7 @@ fun ArticlesList(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    NewsAppJetpackComposeTheme {
+    NewsAppKtTheme {
         val list = ArrayList<ArticleView>()
 
         list.add(ArticleView("title 1", "section 1", "author 1", "release 1","weburl 1", "thumb 1"))

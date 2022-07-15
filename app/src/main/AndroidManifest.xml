@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.NewsAppJetpackCompose" >
+        android:theme="@style/Theme.NewsAppKt" >
         <activity
             android:name=".presentation.view.appcompat.activity.NewsActivity"
             android:exported="false"
@@ -28,7 +28,7 @@
         <activity
             android:name=".presentation.view.compose.NewsComposeActivity"
             android:exported="false"
-            android:theme="@style/Theme.NewsAppJetpackCompose">
+            android:theme="@style/Theme.NewsAppKt">
         </activity>
     </application>
 

@@ -33,7 +33,7 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun NewsAppJetpackComposeTheme(
+fun NewsAppKtTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
