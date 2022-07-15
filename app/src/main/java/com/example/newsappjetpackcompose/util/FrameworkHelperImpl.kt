@@ -5,7 +5,7 @@ import android.net.ConnectivityManager
 import com.example.newsappjetpackcompose.R
 import javax.inject.Inject
 
-class HelperImpl @Inject constructor(val context: Context): Helper {
+class FrameworkHelperImpl @Inject constructor(val context: Context): FrameworkHelper {
 
     override fun isOnline(): Boolean {
         //Verify if there is internet connection, if so then update the screen with the news articles

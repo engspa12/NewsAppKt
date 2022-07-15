@@ -1,6 +1,7 @@
-package com.example.newsappjetpackcompose.data.network.response
+package com.example.newsappjetpackcompose.data.network.mapper
 
-import com.example.newsappjetpackcompose.domain.helper.NetworkMapper
+import com.example.newsappjetpackcompose.data.helper.NetworkMapper
+import com.example.newsappjetpackcompose.data.network.model.ArticleNetwork
 import com.example.newsappjetpackcompose.domain.model.ArticleDomain
 
 class ArticleNetworkMapper: NetworkMapper<ArticleNetwork,ArticleDomain> {

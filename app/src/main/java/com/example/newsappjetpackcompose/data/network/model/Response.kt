@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.data.network.response
+package com.example.newsappjetpackcompose.data.network.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

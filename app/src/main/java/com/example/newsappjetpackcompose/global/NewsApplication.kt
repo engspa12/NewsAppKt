@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.root
+package com.example.newsappjetpackcompose.global
 
 import android.app.Application
 import android.content.Context

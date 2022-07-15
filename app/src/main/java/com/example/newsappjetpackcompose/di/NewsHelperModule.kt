@@ -1,8 +1,8 @@
 package com.example.newsappjetpackcompose.di
 
 import android.content.Context
-import com.example.newsappjetpackcompose.util.Helper
-import com.example.newsappjetpackcompose.util.HelperImpl
+import com.example.newsappjetpackcompose.util.FrameworkHelper
+import com.example.newsappjetpackcompose.util.FrameworkHelperImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +14,7 @@ import dagger.hilt.components.SingletonComponent
 object NewsHelperModule {
 
     @Provides
-    fun provideHelper(@ApplicationContext appContext: Context): Helper {
-        return HelperImpl(appContext)
+    fun provideHelper(@ApplicationContext appContext: Context): FrameworkHelper {
+        return FrameworkHelperImpl(appContext)
     }
 }

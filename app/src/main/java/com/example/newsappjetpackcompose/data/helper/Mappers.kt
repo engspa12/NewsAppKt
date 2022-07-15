@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.domain.helper
+package com.example.newsappjetpackcompose.data.helper
 
 interface NetworkMapper<Dto, DomainModel> {
 

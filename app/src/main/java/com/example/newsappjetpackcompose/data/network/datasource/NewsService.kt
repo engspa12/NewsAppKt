@@ -1,6 +1,6 @@
 package com.example.newsappjetpackcompose.data.network.datasource
 
-import com.example.newsappjetpackcompose.data.network.response.NewsSearch
+import com.example.newsappjetpackcompose.data.network.model.NewsSearch
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
