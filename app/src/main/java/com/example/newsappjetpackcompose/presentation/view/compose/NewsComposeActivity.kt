@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.newsappjetpackcompose.presentation.view.compose.screens.ArticlesScreen
-import com.example.newsappjetpackcompose.presentation.view.compose.ui.theme.NewsAppKtTheme
+import com.example.newsappjetpackcompose.presentation.view.compose.theme.NewsAppKtTheme
 import com.example.newsappjetpackcompose.presentation.viewmodel.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

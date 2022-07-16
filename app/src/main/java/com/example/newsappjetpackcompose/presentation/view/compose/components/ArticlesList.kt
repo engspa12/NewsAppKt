@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.newsappjetpackcompose.presentation.model.ArticleView
-import com.example.newsappjetpackcompose.presentation.view.compose.ui.theme.NewsAppKtTheme
+import com.example.newsappjetpackcompose.presentation.view.compose.theme.NewsAppKtTheme
 
 @Composable
 fun ArticlesList(
