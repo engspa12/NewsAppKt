@@ -16,13 +16,13 @@ import com.example.newsappjetpackcompose.presentation.view.compose.theme.NewsApp
 @Composable
 fun ArticlesList(
     lazyState: LazyListState,
-    list: List<ArticleView>,
+    list: List<ArticleView>?,
     onItemClicked: (String) -> Unit
 ){
     LazyColumn(
         state = lazyState
     ) {
-        itemsIndexed(list) { index, articleView ->
+        itemsIndexed(list ?: listOf()) { _, articleView ->
             ArticleItem(
                 articleView = articleView,
                 modifier = Modifier

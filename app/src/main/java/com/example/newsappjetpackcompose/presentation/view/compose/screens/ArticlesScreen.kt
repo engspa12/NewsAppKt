@@ -40,7 +40,7 @@ fun ArticlesScreen(
         is ArticlesUIState.Success -> {
             ArticlesList(
                 lazyState = lazyState,
-                list = (uiState as ArticlesUIState.Success).data
+                list = uiState.data
             ) { articleURL ->
                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(articleURL))
                 if (intent.resolveActivity(context.packageManager) != null) {
@@ -50,7 +50,7 @@ fun ArticlesScreen(
         }
         is ArticlesUIState.Loading -> {
             ProgressBar(
-                message = (uiState as ArticlesUIState.Loading).loadingMessage,
+                message = uiState.loadingMessage,
                 modifier = Modifier
                     .fillMaxSize()
                     .wrapContentHeight(Alignment.CenterVertically)
@@ -58,7 +58,7 @@ fun ArticlesScreen(
         }
         is ArticlesUIState.Error -> {
             ErrorIndicator(
-                errorMessage = (uiState as ArticlesUIState.Error).errorMessage,
+                errorMessage = uiState.errorMessage,
                 modifier = Modifier
                     .fillMaxSize()
                     .wrapContentHeight(Alignment.CenterVertically)

@@ -54,7 +54,7 @@ class NewsActivity : AppCompatActivity() {
                 viewModel.uiState.collect { state ->
                     when(state) {
                         is ArticlesUIState.Success -> {
-                            adapter.setList(state.data)
+                            adapter.setList(state.data ?: listOf())
                             showListArticles()
                         }
                         is ArticlesUIState.Error -> {
