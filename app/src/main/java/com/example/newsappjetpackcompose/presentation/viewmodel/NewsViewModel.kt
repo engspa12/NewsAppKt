@@ -4,10 +4,10 @@ import androidx.lifecycle.ViewModel
 import com.example.newsappjetpackcompose.domain.interactor.NewsInteractor
 import com.example.newsappjetpackcompose.presentation.model.ArticleView
 import com.example.newsappjetpackcompose.presentation.state.ArticlesUIState
+import com.example.newsappjetpackcompose.util.ResultWrapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -19,7 +19,6 @@ class NewsViewModel @Inject constructor(
 ): ViewModel() {
 
     private var subscription: Disposable? = null
-    private var articles: List<ArticleView> = emptyList()
 
     private val _uiState = MutableStateFlow<ArticlesUIState>(ArticlesUIState.Loading("Loading News..."))
     val uiState: StateFlow<ArticlesUIState>
@@ -29,18 +28,17 @@ class NewsViewModel @Inject constructor(
         subscription = newsInteractor.sendData(searchTerm, sortType)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeWith(object : DisposableObserver<List<ArticleView>>() {
-                override fun onNext(list: List<ArticleView>) {
-                    articles = list
+            .subscribe({ result ->
+                when(result) {
+                    is ResultWrapper.Success -> {
+                        _uiState.value = ArticlesUIState.Success(result.value)
+                    }
+                    is ResultWrapper.Failure -> {
+                        _uiState.value = ArticlesUIState.Error(result.errorMessage ?: "")
+                    }
                 }
-
-                override fun onError(e: Throwable) {
-                    _uiState.value = ArticlesUIState.Error(e.message ?: "")
-                }
-
-                override fun onComplete() {
-                    _uiState.value = ArticlesUIState.Success(articles)
-                }
+            },{ e ->
+                _uiState.value = ArticlesUIState.Error(e.message ?: "")
             })
     }
 
