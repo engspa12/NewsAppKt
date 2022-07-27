@@ -2,7 +2,6 @@ package com.example.newsappjetpackcompose.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.newsappjetpackcompose.domain.interactor.NewsInteractor
-import com.example.newsappjetpackcompose.presentation.model.ArticleView
 import com.example.newsappjetpackcompose.presentation.state.ArticlesUIState
 import com.example.newsappjetpackcompose.util.ResultWrapper
 import dagger.hilt.android.lifecycle.HiltViewModel

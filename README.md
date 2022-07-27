@@ -39,7 +39,7 @@ API_KEY = Insert your TheGuardianOpenPlatform API key here using double quotes
 ## Compatibility
 
 #### Minimum Android SDK: NewsAppKt requires a minimum API level of 21.
-#### Compile Android SDK: NewsAppKt requires you to compile against API 31 or later.
+#### Compile Android SDK: NewsAppKt requires you to compile against API 32 or later.
 
 ## Getting Help
 
