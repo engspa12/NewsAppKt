@@ -17,7 +17,8 @@ fun ProgressBar(
     modifier: Modifier = Modifier
 ){
     Column(
-        modifier = modifier) {
+        modifier = modifier
+    ) {
         CircularProgressIndicator(
             modifier = Modifier
                 .align(alignment = Alignment.CenterHorizontally)

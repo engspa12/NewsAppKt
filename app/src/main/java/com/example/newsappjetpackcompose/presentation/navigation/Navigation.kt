@@ -29,7 +29,7 @@ fun Navigation(
     navController: NavHostController
 ) {
 
-    var searchType by rememberSaveable { mutableStateOf("") }
+    var searchType by rememberSaveable { mutableStateOf(Constants.RELEVANCE_SEARCH_TYPE) }
     var searchInput by rememberSaveable { mutableStateOf("") }
     var showMenu by remember { mutableStateOf(false) }
     var navigationType by rememberSaveable { mutableStateOf(Constants.NavType.NAV_MAIN)}

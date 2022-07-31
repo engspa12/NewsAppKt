@@ -12,19 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsAppKt" >
-        <!--<activity
-            android:name=".presentation.view.appcompat.activity.NewsActivity"
-            android:exported="false"
-            android:theme="@style/Theme.NewsApp"/>
-        <activity
-            android:name=".presentation.view.appcompat.activity.WelcomeActivity"
-            android:exported="true"
-            android:theme="@style/Theme.NewsApp">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>-->
         <activity
             android:name=".presentation.view.compose.NewsComposeActivity"
             android:exported="true"

@@ -28,6 +28,7 @@ fun TopBar(
     titleTopBar: String,
     navigationType: Constants.NavType,
     navController: NavHostController,
+    modifier: Modifier = Modifier,
     onDismissMenu: () -> Unit,
     onMenuIconClick: () -> Unit,
     onMenuItemClick: (String) -> Unit
@@ -36,7 +37,8 @@ fun TopBar(
         backgroundColor = MaterialTheme.colors.primary,
         contentColor = MaterialTheme.colors.onSecondary,
         contentPadding = PaddingValues(start = 18.dp),
-        elevation = 0.dp
+        elevation = 0.dp,
+        modifier = modifier
     ) {
         Row(
             modifier = Modifier
