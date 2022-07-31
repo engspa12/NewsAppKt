@@ -34,86 +34,10 @@ fun App(
     val navController = rememberNavController()
     val scaffoldState = rememberScaffoldState()
 
-    var searchType by rememberSaveable { mutableStateOf("") }
-    var showMenu by remember { mutableStateOf(false) }
-    var navigationType by rememberSaveable { mutableStateOf(Constants.NavType.NAV_MAIN)}
-    var searchInput by rememberSaveable { mutableStateOf("") }
-
-
-    Scaffold(
+    Navigation(
+        context = context,
         scaffoldState = scaffoldState,
-        topBar = {
-            TopBar(
-                showMenu = showMenu,
-                titleTopBar = stringResource(id = R.string.app_name),
-                navigationType = navigationType,
-                navController = navController,
-                onDismissMenu = {
-                    showMenu = false
-                },
-                onMenuIconClick = {
-                    showMenu = !showMenu
-                }
-            ) { newSearchType ->
-                showMenu = false
-                searchType = newSearchType
-            }
-        }
-    ) { paddingValues ->
-        /*Navigation(
-            context = context,
-            navController = navController,
-            searchType = searchType,
-            onNavigationChange = {
-                navigationType = it
-            },
-            modifier = Modifier
-                .padding(paddingValues = paddingValues)
-        )*/
-        NavHost(navController = navController, startDestination = "news"){
-            navigation(startDestination = Screen.MainScreen.route, route = "news") {
-                composable(
-                    route = Screen.MainScreen.route
-                ) {
-                    navigationType = Constants.NavType.NAV_MAIN
-                    WelcomeScreen(
-                        searchType = searchType,
-                        searchInput = searchInput,
-                        onSearchInputChanged = {
-                            searchInput = it
-                        },
-                        onSearchButtonClicked = {
-                            navController.navigate(Screen.DetailScreen.withArgs(searchInput, searchType))
-                        },
-                        modifier = Modifier
-                            .padding(paddingValues = paddingValues)
-                    )
-                }
-                composable(
-                    route = Screen.DetailScreen.route + "/{searchInput}/{searchType}",
-                    arguments = listOf(
-                        navArgument("searchInput") {
-                            type = NavType.StringType
-                            defaultValue = ""
-                            nullable = false
-                        },
-                        navArgument("searchType") {
-                            type = NavType.StringType
-                            defaultValue = ""
-                            nullable = false
-                        }
-                    )
-                ) { backStackEntry ->
-                    navigationType = Constants.NavType.NAV_DETAILS
-                    val newsViewModel = hiltViewModel<NewsViewModel>()
-                    ArticlesScreen(
-                        context = context,
-                        viewModel = newsViewModel,
-                        searchInput = backStackEntry.arguments?.getString("searchInput") ?: "",
-                        searchType = backStackEntry.arguments?.getString("searchType") ?: ""
-                    )
-                }
-            }
-        }
-    }
+        navController = navController
+    )
+
 }
