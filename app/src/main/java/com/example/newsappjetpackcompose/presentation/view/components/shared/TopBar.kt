@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.presentation.view.compose.components
+package com.example.newsappjetpackcompose.presentation.view.components.shared
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

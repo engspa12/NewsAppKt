@@ -17,10 +17,11 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.navArgument
 import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.global.Constants
-import com.example.newsappjetpackcompose.presentation.view.compose.components.TopBar
-import com.example.newsappjetpackcompose.presentation.view.compose.screens.ArticlesScreen
-import com.example.newsappjetpackcompose.presentation.view.compose.screens.WelcomeScreen
+import com.example.newsappjetpackcompose.presentation.view.components.shared.TopBar
+import com.example.newsappjetpackcompose.presentation.view.screens.ArticlesScreen
+import com.example.newsappjetpackcompose.presentation.view.screens.WelcomeScreen
 import com.example.newsappjetpackcompose.presentation.viewmodel.NewsViewModel
+import com.example.newsappjetpackcompose.util.Validator
 
 @Composable
 fun Navigation(
@@ -32,6 +33,8 @@ fun Navigation(
     var searchType by rememberSaveable { mutableStateOf(Constants.RELEVANCE_SEARCH_TYPE) }
     var searchInput by rememberSaveable { mutableStateOf("") }
     var showMenu by remember { mutableStateOf(false) }
+    var showSnackbar by remember { mutableStateOf(false)}
+    var snackbarMessage by remember { mutableStateOf("")}
     var navigationType by rememberSaveable { mutableStateOf(Constants.NavType.NAV_MAIN)}
 
     Scaffold(
@@ -55,9 +58,9 @@ fun Navigation(
         }
     ) { paddingValues ->
         NavHost(navController = navController, startDestination = "news", modifier = Modifier.padding(paddingValues)){
-            navigation(startDestination = Screen.MainScreen.route, route = "news") {
+            navigation(startDestination = Screen.WelcomeScreen.route, route = "news") {
                 composable(
-                    route = Screen.MainScreen.route
+                    route = Screen.WelcomeScreen.route
                 ) {
                     navigationType = Constants.NavType.NAV_MAIN
                     WelcomeScreen(
@@ -67,12 +70,18 @@ fun Navigation(
                             searchInput = it
                         },
                         onSearchButtonClicked = {
-                            navController.navigate(Screen.DetailScreen.withArgs(searchInput, searchType))
+                           /* if(Validator.isEmptyString(searchInput)){
+
+                            } else if (Validator.isMoreThanTwoCharacters(searchInput)){
+
+                            } else {*/
+                                navController.navigate(Screen.ArticlesScreen.withArgs(searchInput, searchType))
+                            //}
                         }
                     )
                 }
                 composable(
-                    route = Screen.DetailScreen.route + "/{searchInput}/{searchType}",
+                    route = Screen.ArticlesScreen.route + "/{searchInput}/{searchType}",
                     arguments = listOf(
                         navArgument("searchInput") {
                             type = NavType.StringType

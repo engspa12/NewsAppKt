@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.presentation.view.compose.screens
+package com.example.newsappjetpackcompose.presentation.view.screens
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
@@ -10,8 +10,8 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import com.example.newsappjetpackcompose.R
-import com.example.newsappjetpackcompose.presentation.view.compose.components.WelcomeContent
-import com.example.newsappjetpackcompose.presentation.view.compose.components.WelcomeContentLand
+import com.example.newsappjetpackcompose.presentation.view.components.welcome.WelcomeContent
+import com.example.newsappjetpackcompose.presentation.view.components.welcome.WelcomeContentLand
 
 @Composable
 fun WelcomeScreen(

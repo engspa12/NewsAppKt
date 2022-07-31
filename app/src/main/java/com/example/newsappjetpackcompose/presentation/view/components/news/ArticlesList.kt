@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.presentation.view.compose.components
+package com.example.newsappjetpackcompose.presentation.view.components.news
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -11,12 +11,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.newsappjetpackcompose.presentation.model.ArticleView
-import com.example.newsappjetpackcompose.presentation.view.compose.theme.NewsAppKtTheme
+import com.example.newsappjetpackcompose.presentation.view.theme.NewsAppKtTheme
 
 @Composable
 fun ArticlesList(
     lazyState: LazyListState,
-    list: List<ArticleView>?,
+    list: List<ArticleView>,
     modifier: Modifier = Modifier,
     onItemClicked: (String) -> Unit
 ){
@@ -24,7 +24,7 @@ fun ArticlesList(
         modifier = modifier,
         state = lazyState
     ) {
-        itemsIndexed(list ?: listOf()) { _, articleView ->
+        itemsIndexed(list) { _, articleView ->
             ArticleItem(
                 articleView = articleView,
                 modifier = Modifier

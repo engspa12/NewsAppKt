@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.presentation.view.compose.components
+package com.example.newsappjetpackcompose.presentation.view.components.welcome
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.global.Constants
-import com.example.newsappjetpackcompose.presentation.view.compose.theme.NewsAppKtTheme
+import com.example.newsappjetpackcompose.presentation.view.theme.NewsAppKtTheme
 
 @Composable
 fun WelcomeContentLand(

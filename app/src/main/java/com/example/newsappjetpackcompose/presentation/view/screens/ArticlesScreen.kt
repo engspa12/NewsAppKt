@@ -1,4 +1,4 @@
-package com.example.newsappjetpackcompose.presentation.view.compose.screens
+package com.example.newsappjetpackcompose.presentation.view.screens
 
 import android.content.Context
 import android.content.Intent
@@ -15,9 +15,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.newsappjetpackcompose.presentation.state.ArticlesUIState
-import com.example.newsappjetpackcompose.presentation.view.compose.components.ErrorIndicator
-import com.example.newsappjetpackcompose.presentation.view.compose.components.ArticlesList
-import com.example.newsappjetpackcompose.presentation.view.compose.components.ProgressBar
+import com.example.newsappjetpackcompose.presentation.view.components.news.ArticlesList
+import com.example.newsappjetpackcompose.presentation.view.components.news.ErrorIndicator
+import com.example.newsappjetpackcompose.presentation.view.components.news.ProgressBar
 import com.example.newsappjetpackcompose.presentation.viewmodel.NewsViewModel
 
 @Composable
@@ -49,7 +49,7 @@ fun ArticlesScreen(
         }
         is ArticlesUIState.Loading -> {
             ProgressBar(
-                message = uiState.loadingMessage,
+                message = uiState.loadingMessage.asString(),
                 modifier = Modifier
                     .fillMaxSize()
                     .wrapContentHeight(Alignment.CenterVertically)
@@ -57,7 +57,7 @@ fun ArticlesScreen(
         }
         is ArticlesUIState.Error -> {
             ErrorIndicator(
-                errorMessage = uiState.errorMessage,
+                errorMessage = uiState.errorMessage.asString(),
                 modifier = Modifier
                     .fillMaxSize()
                     .wrapContentHeight(Alignment.CenterVertically)

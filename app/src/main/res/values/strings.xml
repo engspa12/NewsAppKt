@@ -7,7 +7,7 @@
     <!--No internet connection message-->
     <string name="no_internet_connection">There is no Internet Connection</string>
     <!--Message when no articles are available-->
-    <string name="no_data">No Articles Found</string>
+    <string name="no_articles_found_message">No Articles Found</string>
     <string name="search_hint">Type key word</string>
     <string name="by_unknown_author_text">By unknown author</string>
     <string name="order_by_query_key">order-by</string>
@@ -26,4 +26,6 @@
     <string name="search_latest_news_text">Search Latest News</string>
     <string name="error_message">There was an error while retrieving the data.\nPlease try again later.</string>
     <string name="welcome_image_content_description">Welcome Image Message</string>
+    <string name="error_data_retrieval">There was a problem retrieving the data</string>
+    <string name="loading_news_message">Loading News…</string>
 </resources>

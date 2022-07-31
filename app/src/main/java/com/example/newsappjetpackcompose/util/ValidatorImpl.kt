@@ -2,10 +2,11 @@ package com.example.newsappjetpackcompose.util
 
 import android.content.Context
 import android.net.ConnectivityManager
-import com.example.newsappjetpackcompose.R
 import javax.inject.Inject
 
-class FrameworkHelperImpl @Inject constructor(val context: Context): FrameworkHelper {
+class ValidatorImpl @Inject constructor(
+    val context: Context
+): Validator {
 
     override fun isOnline(): Boolean {
         //Verify if there is internet connection, if so then update the screen with the news articles
@@ -16,7 +17,11 @@ class FrameworkHelperImpl @Inject constructor(val context: Context): FrameworkHe
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting;
     }
 
-    override fun getNoInternetMessage(): String {
-        return context.getString(R.string.no_internet_connection)
+    override fun isEmptyString(inputString: String): Boolean{
+        return inputString.isEmpty()
+    }
+
+    override fun isMoreThanTwoCharacters(inputString: String): Boolean {
+        return inputString.length > 2
     }
 }

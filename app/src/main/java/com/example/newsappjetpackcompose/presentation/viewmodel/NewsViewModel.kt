@@ -1,9 +1,11 @@
 package com.example.newsappjetpackcompose.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.domain.interactor.NewsInteractor
 import com.example.newsappjetpackcompose.presentation.state.ArticlesUIState
 import com.example.newsappjetpackcompose.util.ResultWrapper
+import com.example.newsappjetpackcompose.util.UIText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -19,7 +21,7 @@ class NewsViewModel @Inject constructor(
 
     private var subscription: Disposable? = null
 
-    private val _uiState = MutableStateFlow<ArticlesUIState>(ArticlesUIState.Loading("Loading News..."))
+    private val _uiState = MutableStateFlow<ArticlesUIState>(ArticlesUIState.Loading(UIText.ResourceString(id = R.string.loading_news_message)))
     val uiState: StateFlow<ArticlesUIState>
         get() = _uiState
 
@@ -33,11 +35,11 @@ class NewsViewModel @Inject constructor(
                         _uiState.value = ArticlesUIState.Success(result.value)
                     }
                     is ResultWrapper.Failure -> {
-                        _uiState.value = ArticlesUIState.Error(result.errorMessage ?: "")
+                        _uiState.value = ArticlesUIState.Error(result.errorMessage)
                     }
                 }
             },{ e ->
-                _uiState.value = ArticlesUIState.Error(e.message ?: "")
+                _uiState.value = ArticlesUIState.Error(UIText.ResourceString(id = R.string.error_data_retrieval))
             })
     }
 
