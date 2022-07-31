@@ -24,8 +24,10 @@
     <string name="newest_news_menu">Latest News</string>
     <string name="search_relevant_news_text">Search Relevant News</string>
     <string name="search_latest_news_text">Search Latest News</string>
-    <string name="error_message">There was an error while retrieving the data.\nPlease try again later.</string>
     <string name="welcome_image_content_description">Welcome Image Message</string>
-    <string name="error_data_retrieval">There was a problem retrieving the data</string>
+    <string name="error_data_retrieval">There was a problem retrieving the data.\nPlease try again later.</string>
+    <string name="error_generic">An error occurred while processing the data.</string>
     <string name="loading_news_message">Loading News…</string>
+    <string name="error_empty_input">Please enter a word before pressing the button</string>
+    <string name="error_not_enough_characters">Please enter at least 3 characters</string>
 </resources>

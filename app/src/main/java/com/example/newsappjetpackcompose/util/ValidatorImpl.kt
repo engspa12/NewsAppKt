@@ -17,11 +17,11 @@ class ValidatorImpl @Inject constructor(
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting;
     }
 
-    override fun isEmptyString(inputString: String): Boolean{
-        return inputString.isEmpty()
+    override fun isEmptyString(inputString: String): Boolean {
+        return inputString.trim().isEmpty()
     }
 
-    override fun isMoreThanTwoCharacters(inputString: String): Boolean {
-        return inputString.length > 2
+    override fun isLessThanThreeCharacters(inputString: String): Boolean {
+        return inputString.trim().length < 3
     }
 }

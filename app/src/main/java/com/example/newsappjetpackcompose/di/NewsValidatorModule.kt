@@ -14,7 +14,7 @@ import dagger.hilt.components.SingletonComponent
 object NewsValidatorModule {
 
     @Provides
-    fun provideHelper(@ApplicationContext appContext: Context): Validator {
+    fun provideValidator(@ApplicationContext appContext: Context): Validator {
         return ValidatorImpl(appContext)
     }
 }

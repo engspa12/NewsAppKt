@@ -15,4 +15,11 @@ sealed class UIText {
             is ResourceString -> stringResource(id = id, formatArgs =  args)
         }
     }
+
+    fun getStringIdResource(): Int? {
+        return when(this) {
+            is DynamicString -> null
+            is ResourceString -> id
+        }
+    }
 }

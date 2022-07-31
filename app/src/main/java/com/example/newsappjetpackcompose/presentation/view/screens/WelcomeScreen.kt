@@ -1,5 +1,6 @@
 package com.example.newsappjetpackcompose.presentation.view.screens
 
+import android.content.Context
 import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,15 +11,19 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import com.example.newsappjetpackcompose.R
+import com.example.newsappjetpackcompose.presentation.state.WelcomeUIState
 import com.example.newsappjetpackcompose.presentation.view.components.welcome.WelcomeContent
 import com.example.newsappjetpackcompose.presentation.view.components.welcome.WelcomeContentLand
+import com.example.newsappjetpackcompose.presentation.viewmodel.WelcomeViewModel
 
 @Composable
 fun WelcomeScreen(
+    context: Context,
+    viewModel: WelcomeViewModel,
     searchType: String,
     searchInput: String,
     onSearchInputChanged: (String) -> Unit,
-    onSearchButtonClicked: () -> Unit
+    onSearchButtonClicked: (Boolean, String) -> Unit
 ){
     val configuration = LocalConfiguration.current
     when (configuration.orientation) {
@@ -30,7 +35,18 @@ fun WelcomeScreen(
                     onSearchInputChanged(it)
                 },
                 onSearchButtonClicked = {
-                    onSearchButtonClicked()
+                    when(val validation = viewModel.validateInput(searchInput)){
+                        is WelcomeUIState.Success -> {
+                            onSearchButtonClicked(false, "")
+                        }
+                        is WelcomeUIState.Error -> {
+                            onSearchButtonClicked(
+                                true,
+                                context.getString(validation.errorMessage.getStringIdResource() ?: R.string.error_generic)
+                            )
+                        }
+                    }
+
                 },
                 modifier = Modifier
                     .fillMaxSize()
@@ -46,7 +62,17 @@ fun WelcomeScreen(
                     onSearchInputChanged(it)
                 },
                 onSearchButtonClicked = {
-                    onSearchButtonClicked()
+                    when(val validation = viewModel.validateInput(searchInput)){
+                        is WelcomeUIState.Success -> {
+                            onSearchButtonClicked(false, "")
+                        }
+                        is WelcomeUIState.Error -> {
+                            onSearchButtonClicked(
+                                true,
+                                context.getString(validation.errorMessage.getStringIdResource() ?: R.string.error_generic)
+                            )
+                        }
+                    }
                 },
                 modifier = Modifier
                     .fillMaxSize()

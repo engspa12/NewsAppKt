@@ -2,8 +2,7 @@ package com.example.newsappjetpackcompose.presentation.navigation
 
 import android.content.Context
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Scaffold
-import androidx.compose.material.ScaffoldState
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -21,7 +20,8 @@ import com.example.newsappjetpackcompose.presentation.view.components.shared.Top
 import com.example.newsappjetpackcompose.presentation.view.screens.ArticlesScreen
 import com.example.newsappjetpackcompose.presentation.view.screens.WelcomeScreen
 import com.example.newsappjetpackcompose.presentation.viewmodel.NewsViewModel
-import com.example.newsappjetpackcompose.util.Validator
+import com.example.newsappjetpackcompose.presentation.viewmodel.WelcomeViewModel
+import kotlinx.coroutines.launch
 
 @Composable
 fun Navigation(
@@ -33,12 +33,20 @@ fun Navigation(
     var searchType by rememberSaveable { mutableStateOf(Constants.RELEVANCE_SEARCH_TYPE) }
     var searchInput by rememberSaveable { mutableStateOf("") }
     var showMenu by remember { mutableStateOf(false) }
-    var showSnackbar by remember { mutableStateOf(false)}
-    var snackbarMessage by remember { mutableStateOf("")}
     var navigationType by rememberSaveable { mutableStateOf(Constants.NavType.NAV_MAIN)}
+    val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
         scaffoldState = scaffoldState,
+        snackbarHost = {
+            SnackbarHost(hostState = it) { data ->
+                Snackbar(
+                    backgroundColor = MaterialTheme.colors.background,
+                    contentColor = MaterialTheme.colors.onBackground,
+                    snackbarData = data
+                )
+            }
+        },
         topBar = {
             TopBar(
                 showMenu = showMenu,
@@ -57,26 +65,32 @@ fun Navigation(
             }
         }
     ) { paddingValues ->
+
         NavHost(navController = navController, startDestination = "news", modifier = Modifier.padding(paddingValues)){
             navigation(startDestination = Screen.WelcomeScreen.route, route = "news") {
                 composable(
                     route = Screen.WelcomeScreen.route
                 ) {
                     navigationType = Constants.NavType.NAV_MAIN
+                    val welcomeViewModel = hiltViewModel<WelcomeViewModel>()
                     WelcomeScreen(
+                        context = context,
+                        viewModel = welcomeViewModel,
                         searchType = searchType,
                         searchInput = searchInput,
                         onSearchInputChanged = {
                             searchInput = it
                         },
-                        onSearchButtonClicked = {
-                           /* if(Validator.isEmptyString(searchInput)){
-
-                            } else if (Validator.isMoreThanTwoCharacters(searchInput)){
-
-                            } else {*/
+                        onSearchButtonClicked = { errorPresent, errorMessage ->
+                            if(errorPresent){
+                                coroutineScope.launch {
+                                    scaffoldState.snackbarHostState.showSnackbar(
+                                        errorMessage
+                                    )
+                                }
+                            } else {
                                 navController.navigate(Screen.ArticlesScreen.withArgs(searchInput, searchType))
-                            //}
+                            }
                         }
                     )
                 }
