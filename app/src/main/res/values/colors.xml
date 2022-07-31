@@ -11,4 +11,7 @@
     <color name="appbar_background">#7A8BEA</color>
     <color name="item_background">#FFDDAA</color>
     <color name="item_border">#23DDAA</color>
+    <color name="button_background">#22882F</color>
+    <color name="text_color_edit_text">#AFD023</color>
+    <color name="text_color_hint_edit_text">#90CAF9</color>
 </resources>

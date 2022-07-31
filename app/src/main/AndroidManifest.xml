@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsAppKt" >
-        <activity
+        <!--<activity
             android:name=".presentation.view.appcompat.activity.NewsActivity"
             android:exported="false"
             android:theme="@style/Theme.NewsApp"/>
@@ -24,11 +24,15 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity>-->
         <activity
             android:name=".presentation.view.compose.NewsComposeActivity"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/Theme.NewsAppKt">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

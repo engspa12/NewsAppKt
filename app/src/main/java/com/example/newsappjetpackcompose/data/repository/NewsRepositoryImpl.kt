@@ -25,12 +25,12 @@ class NewsRepositoryImpl @Inject constructor(
         private const val FILTER_RESULTS = "headline,byline,thumbnail"
     }
 
-    override fun getNewsData(searchTerm: String, sortType: String): Observable<List<ArticleDomain>> {
+    override fun getNewsData(searchTerm: String, searchType: String): Observable<List<ArticleDomain>> {
         //Map for querying the API
         val parameters = HashMap<String, String>()
 
         parameters["q"] = searchTerm
-        parameters["order-by"] = sortType
+        parameters["order-by"] = searchType
         parameters["show-fields"] = FILTER_RESULTS
         parameters["page-size"] = NUMBER_OF_ARTICLES
         parameters["api-key"] = API_KEY

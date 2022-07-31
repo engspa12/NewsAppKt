@@ -24,15 +24,15 @@ import com.example.newsappjetpackcompose.presentation.viewmodel.NewsViewModel
 fun ArticlesScreen(
     context: Context,
     viewModel: NewsViewModel,
-    searchTerm: String,
-    sortType: String
+    searchInput: String,
+    searchType: String
 ){
 
     val lazyState = rememberLazyListState()
     val uiState by viewModel.uiState.collectAsState()
 
     LaunchedEffect(key1 = Unit) {
-        viewModel.getNews(searchTerm, sortType)
+        viewModel.getNews(searchInput, searchType)
     }
 
     when(uiState) {

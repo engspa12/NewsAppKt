@@ -1,6 +1,7 @@
 package com.example.newsappjetpackcompose.di
 
 import com.example.newsappjetpackcompose.data.network.datasource.NewsService
+import com.example.newsappjetpackcompose.global.Constants
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -16,7 +17,7 @@ import javax.inject.Singleton
 class NewsRetrofitModule {
 
     companion object {
-        private const val BASE_URL =  "https://content.guardianapis.com/"
+        private const val BASE_URL =  Constants.BASE_URL
     }
 
     @Singleton

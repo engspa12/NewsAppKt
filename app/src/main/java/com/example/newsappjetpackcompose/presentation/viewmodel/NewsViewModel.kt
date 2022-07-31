@@ -23,8 +23,8 @@ class NewsViewModel @Inject constructor(
     val uiState: StateFlow<ArticlesUIState>
         get() = _uiState
 
-    fun getNews(searchTerm: String, sortType: String) {
-        subscription = newsInteractor.sendData(searchTerm, sortType)
+    fun getNews(searchTerm: String, searchType: String) {
+        subscription = newsInteractor.sendData(searchTerm, searchType)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ result ->

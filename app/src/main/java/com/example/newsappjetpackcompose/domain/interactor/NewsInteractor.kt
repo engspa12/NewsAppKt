@@ -5,5 +5,5 @@ import com.example.newsappjetpackcompose.util.ResultWrapper
 import io.reactivex.Observable
 
 interface NewsInteractor {
-    fun sendData(searchTerm: String, sortType: String): Observable<ResultWrapper<List<ArticleView>>>
+    fun sendData(searchTerm: String, searchType: String): Observable<ResultWrapper<List<ArticleView>>>
 }

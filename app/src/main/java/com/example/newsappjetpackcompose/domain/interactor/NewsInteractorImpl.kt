@@ -13,9 +13,9 @@ class NewsInteractorImpl @Inject constructor(
     private val frameworkHelper: FrameworkHelper
 ): NewsInteractor {
 
-    override fun sendData(searchTerm: String, sortType: String): Observable<ResultWrapper<List<ArticleView>>> {
+    override fun sendData(searchTerm: String, searchType: String): Observable<ResultWrapper<List<ArticleView>>> {
         return if(frameworkHelper.isOnline()) {
-            newsRepository.getNewsData(searchTerm, sortType).concatMap { listItemsDomain ->
+            newsRepository.getNewsData(searchTerm, searchType).concatMap { listItemsDomain ->
                 val listViewItems = listItemsDomain.map {
                     it.toView()
                 }

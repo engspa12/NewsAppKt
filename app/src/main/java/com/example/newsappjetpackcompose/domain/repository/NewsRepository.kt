@@ -4,5 +4,5 @@ import com.example.newsappjetpackcompose.domain.model.ArticleDomain
 import io.reactivex.Observable
 
 interface NewsRepository {
-    fun getNewsData(searchTerm: String, sortType: String): Observable<List<ArticleDomain>>
+    fun getNewsData(searchTerm: String, searchType: String): Observable<List<ArticleDomain>>
 }
