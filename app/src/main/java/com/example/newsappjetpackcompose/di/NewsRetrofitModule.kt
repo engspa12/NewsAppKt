@@ -1,6 +1,6 @@
 package com.example.newsappjetpackcompose.di
 
-import com.example.newsappjetpackcompose.data.network.datasource.NewsService
+import com.example.newsappjetpackcompose.data.network.datasource.NewsNetworkDataSource
 import com.example.newsappjetpackcompose.global.Constants
 import com.squareup.moshi.Moshi
 import dagger.Module
@@ -36,8 +36,8 @@ class NewsRetrofitModule {
 
     @Singleton
     @Provides
-    fun provideNewsService(mosh: Moshi): NewsService {
-        return provideRetrofit(BASE_URL, mosh).create(NewsService::class.java)
+    fun provideNewsService(mosh: Moshi): NewsNetworkDataSource {
+        return provideRetrofit(BASE_URL, mosh).create(NewsNetworkDataSource::class.java)
     }
 
 }

@@ -1,6 +1,6 @@
 package com.example.newsappjetpackcompose.di
 
-import com.example.newsappjetpackcompose.data.network.datasource.NewsService
+import com.example.newsappjetpackcompose.data.network.datasource.NewsNetworkDataSource
 import com.example.newsappjetpackcompose.data.network.model.ArticleNetwork
 import com.example.newsappjetpackcompose.data.repository.NewsRepositoryImpl
 import com.example.newsappjetpackcompose.data.util.NetworkMapper
@@ -16,9 +16,9 @@ import dagger.hilt.components.SingletonComponent
 object NewsRepositoryModule {
 
     @Provides
-    fun provideRepository(newsService: NewsService,
+    fun provideRepository(newsNetworkDataSource: NewsNetworkDataSource,
                           networkMapper: NetworkMapper<ArticleNetwork, ArticleDomain>
     ): NewsRepository {
-        return NewsRepositoryImpl(newsService, networkMapper)
+        return NewsRepositoryImpl(newsNetworkDataSource, networkMapper)
     }
 }

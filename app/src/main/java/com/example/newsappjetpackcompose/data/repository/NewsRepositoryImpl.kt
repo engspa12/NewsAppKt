@@ -1,7 +1,7 @@
 package com.example.newsappjetpackcompose.data.repository
 
 import com.example.newsappjetpackcompose.BuildConfig
-import com.example.newsappjetpackcompose.data.network.datasource.NewsService
+import com.example.newsappjetpackcompose.data.network.datasource.NewsNetworkDataSource
 import com.example.newsappjetpackcompose.data.network.model.ArticleNetwork
 import com.example.newsappjetpackcompose.data.util.NetworkMapper
 import com.example.newsappjetpackcompose.domain.model.ArticleDomain
@@ -10,7 +10,7 @@ import io.reactivex.Observable
 import javax.inject.Inject
 
 class NewsRepositoryImpl @Inject constructor(
-    private val newsService: NewsService,
+    private val newsNetworkDataSource: NewsNetworkDataSource,
     private val networkMapper: NetworkMapper<ArticleNetwork, ArticleDomain>
 ): NewsRepository {
 
@@ -47,7 +47,7 @@ class NewsRepositoryImpl @Inject constructor(
 
     private fun getNewsDataFromNetwork(queryParams: Map<String, String>): Observable<List<ArticleNetwork>> {
 
-        val newsApiObservable = newsService.getNews(queryParams)
+        val newsApiObservable = newsNetworkDataSource.getNews(queryParams)
 
         return newsApiObservable.concatMap { newsSearch ->
             Observable.just(newsSearch.response)

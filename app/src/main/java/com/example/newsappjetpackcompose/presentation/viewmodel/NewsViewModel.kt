@@ -2,7 +2,7 @@ package com.example.newsappjetpackcompose.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.newsappjetpackcompose.R
-import com.example.newsappjetpackcompose.domain.interactor.NewsInteractor
+import com.example.newsappjetpackcompose.domain.service.NewsService
 import com.example.newsappjetpackcompose.presentation.state.ArticlesUIState
 import com.example.newsappjetpackcompose.util.ResultWrapper
 import com.example.newsappjetpackcompose.util.UIText
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NewsViewModel @Inject constructor(
-    private val newsInteractor: NewsInteractor
+    private val newsService: NewsService
 ): ViewModel() {
 
     private var subscription: Disposable? = null
@@ -26,7 +26,7 @@ class NewsViewModel @Inject constructor(
         get() = _uiState
 
     fun getNews(searchTerm: String, searchType: String) {
-        subscription = newsInteractor.sendData(searchTerm, searchType)
+        subscription = newsService.getNews(searchTerm, searchType)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ result ->
