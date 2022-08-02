@@ -1,10 +1,10 @@
 package com.example.newsappjetpackcompose.presentation.state
 
-import com.example.newsappjetpackcompose.util.UIText
+import com.example.newsappjetpackcompose.util.StringWrapper
 
 sealed class WelcomeUIState(
-    val errorMessage: UIText = UIText.DynamicString(""),
+    val errorMessage: StringWrapper = StringWrapper.SimpleString(""),
 ) {
     object Success: WelcomeUIState()
-    class Error(errorMessage: UIText): WelcomeUIState(errorMessage = errorMessage)
+    class Error(errorMessage: StringWrapper): WelcomeUIState(errorMessage = errorMessage)
 }

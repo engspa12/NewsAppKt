@@ -5,7 +5,7 @@ import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.domain.service.NewsService
 import com.example.newsappjetpackcompose.presentation.state.ArticlesUIState
 import com.example.newsappjetpackcompose.util.ResultWrapper
-import com.example.newsappjetpackcompose.util.UIText
+import com.example.newsappjetpackcompose.util.StringWrapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -21,7 +21,7 @@ class NewsViewModel @Inject constructor(
 
     private var subscription: Disposable? = null
 
-    private val _uiState = MutableStateFlow<ArticlesUIState>(ArticlesUIState.Loading(UIText.ResourceString(id = R.string.loading_news_message)))
+    private val _uiState = MutableStateFlow<ArticlesUIState>(ArticlesUIState.Loading(StringWrapper.ResourceString(id = R.string.loading_news_message)))
     val uiState: StateFlow<ArticlesUIState>
         get() = _uiState
 
@@ -39,7 +39,7 @@ class NewsViewModel @Inject constructor(
                     }
                 }
             },{ e ->
-                _uiState.value = ArticlesUIState.Error(UIText.ResourceString(id = R.string.error_data_retrieval))
+                _uiState.value = ArticlesUIState.Error(StringWrapper.ResourceString(id = R.string.error_data_retrieval))
             })
     }
 

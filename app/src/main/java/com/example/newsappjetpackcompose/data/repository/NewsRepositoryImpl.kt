@@ -1,11 +1,14 @@
 package com.example.newsappjetpackcompose.data.repository
 
-import com.example.newsappjetpackcompose.BuildConfig
 import com.example.newsappjetpackcompose.data.network.datasource.NewsNetworkDataSource
 import com.example.newsappjetpackcompose.data.network.model.ArticleNetwork
 import com.example.newsappjetpackcompose.data.util.NetworkMapper
 import com.example.newsappjetpackcompose.domain.model.ArticleDomain
 import com.example.newsappjetpackcompose.domain.repository.NewsRepository
+import com.example.newsappjetpackcompose.global.Constants.API_KEY
+import com.example.newsappjetpackcompose.global.Constants.CACHE_LIFETIME
+import com.example.newsappjetpackcompose.global.Constants.FILTER_RESULTS
+import com.example.newsappjetpackcompose.global.Constants.NUMBER_OF_ARTICLES
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -17,13 +20,6 @@ class NewsRepositoryImpl @Inject constructor(
     /*Simulate the data in Cache*/
     private var listArticlesNetwork: List<ArticleNetwork>? = emptyList()
     private var lastTimeStamp: Long = 0
-
-    companion object {
-        private const val CACHE_LIFETIME = 20 * 1000
-        private const val NUMBER_OF_ARTICLES = "50"
-        private const val API_KEY = BuildConfig.API_KEY
-        private const val FILTER_RESULTS = "headline,byline,thumbnail"
-    }
 
     override fun getNewsData(searchTerm: String, searchType: String): Observable<List<ArticleDomain>> {
         //Map for querying the API

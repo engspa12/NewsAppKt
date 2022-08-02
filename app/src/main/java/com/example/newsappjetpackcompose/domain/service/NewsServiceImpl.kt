@@ -4,7 +4,7 @@ import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.domain.interactor.NewsInteractor
 import com.example.newsappjetpackcompose.presentation.model.ArticleView
 import com.example.newsappjetpackcompose.util.ResultWrapper
-import com.example.newsappjetpackcompose.util.UIText
+import com.example.newsappjetpackcompose.util.StringWrapper
 import com.example.newsappjetpackcompose.util.Validator
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -18,18 +18,18 @@ class NewsServiceImpl @Inject constructor(
         return if(validator.isOnline()) {
             newsInteractor.getNews(searchTerm, searchType)
         } else {
-            val result: ResultWrapper<List<ArticleView>> = ResultWrapper.Failure(UIText.ResourceString(id = R.string.no_internet_connection))
+            val result: ResultWrapper<List<ArticleView>> = ResultWrapper.Failure(StringWrapper.ResourceString(id = R.string.no_internet_connection))
             Observable.just(result)
         }
     }
 
-    override fun checkInputSearch(inputString: String): ResultWrapper<UIText> {
+    override fun checkInputSearch(inputString: String): ResultWrapper<StringWrapper> {
         return if(validator.isEmptyString(inputString)){
-            ResultWrapper.Failure(UIText.ResourceString(id = R.string.error_empty_input))
+            ResultWrapper.Failure(StringWrapper.ResourceString(id = R.string.error_empty_input))
         } else if(validator.isLessThanThreeCharacters(inputString)) {
-            ResultWrapper.Failure(UIText.ResourceString(id = R.string.error_not_enough_characters))
+            ResultWrapper.Failure(StringWrapper.ResourceString(id = R.string.error_not_enough_characters))
         } else {
-            ResultWrapper.Success(UIText.DynamicString("Input is valid"))
+            ResultWrapper.Success(StringWrapper.SimpleString("Input is valid"))
         }
     }
 
