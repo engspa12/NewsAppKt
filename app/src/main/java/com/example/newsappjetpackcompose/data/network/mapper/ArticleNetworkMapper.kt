@@ -1,8 +1,8 @@
 package com.example.newsappjetpackcompose.data.network.mapper
 
 import com.example.newsappjetpackcompose.data.network.model.ArticleNetwork
-import com.example.newsappjetpackcompose.data.util.NetworkMapper
 import com.example.newsappjetpackcompose.domain.model.ArticleDomain
+import com.example.newsappjetpackcompose.domain.util.NetworkMapper
 
 class ArticleNetworkMapper: NetworkMapper<ArticleNetwork, ArticleDomain> {
     override fun mapToDomainModel(dto: ArticleNetwork): ArticleDomain {

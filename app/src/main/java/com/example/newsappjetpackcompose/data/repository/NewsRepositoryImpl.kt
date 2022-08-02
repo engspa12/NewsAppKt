@@ -2,9 +2,9 @@ package com.example.newsappjetpackcompose.data.repository
 
 import com.example.newsappjetpackcompose.data.network.datasource.NewsNetworkDataSource
 import com.example.newsappjetpackcompose.data.network.model.ArticleNetwork
-import com.example.newsappjetpackcompose.data.util.NetworkMapper
 import com.example.newsappjetpackcompose.domain.model.ArticleDomain
 import com.example.newsappjetpackcompose.domain.repository.NewsRepository
+import com.example.newsappjetpackcompose.domain.util.NetworkMapper
 import com.example.newsappjetpackcompose.global.Constants.API_KEY
 import com.example.newsappjetpackcompose.global.Constants.CACHE_LIFETIME
 import com.example.newsappjetpackcompose.global.Constants.FILTER_RESULTS

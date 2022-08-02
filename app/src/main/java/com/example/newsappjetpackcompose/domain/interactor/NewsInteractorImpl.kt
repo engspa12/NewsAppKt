@@ -1,8 +1,8 @@
 package com.example.newsappjetpackcompose.domain.interactor
 
 import com.example.newsappjetpackcompose.R
-import com.example.newsappjetpackcompose.domain.model.ArticleDomain
 import com.example.newsappjetpackcompose.domain.repository.NewsRepository
+import com.example.newsappjetpackcompose.domain.util.toView
 import com.example.newsappjetpackcompose.presentation.model.ArticleView
 import com.example.newsappjetpackcompose.util.ResultWrapper
 import com.example.newsappjetpackcompose.util.StringWrapper
@@ -33,15 +33,4 @@ class NewsInteractorImpl @Inject constructor(
             ResultWrapper.Failure(StringWrapper.ResourceString(id = R.string.error_data_retrieval))
         }
     }
-}
-
-fun ArticleDomain.toView(): ArticleView {
-    return ArticleView(
-        this.title,
-        this.sectionName,
-        this.author,
-        this.releaseDate,
-        this.webUrl,
-        this.thumbnailUrl
-    )
 }

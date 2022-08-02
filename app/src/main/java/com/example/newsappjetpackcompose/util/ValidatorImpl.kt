@@ -5,7 +5,7 @@ import android.net.ConnectivityManager
 import javax.inject.Inject
 
 class ValidatorImpl @Inject constructor(
-    val context: Context
+    private val context: Context
 ): Validator {
 
     override fun isOnline(): Boolean {
