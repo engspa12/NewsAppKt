@@ -5,7 +5,7 @@
     <!--Text for search button-->
     <string name="search_button">Search News</string>
     <!--No internet connection message-->
-    <string name="no_internet_connection">There is no Internet Connection</string>
+    <string name="no_internet_connection">There is no Internet connection</string>
     <!--Message when no articles are available-->
     <string name="no_articles_found_message">There are no articles with the term you entered</string>
     <string name="search_hint">Type key word</string>
