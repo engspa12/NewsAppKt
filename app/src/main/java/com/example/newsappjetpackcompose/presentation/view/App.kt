@@ -53,7 +53,9 @@ fun App(
                 showMenu = showMenu,
                 titleTopBar = stringResource(id = R.string.app_name),
                 navigationType = navigationType,
-                navController = navController,
+                goBackToMain = {
+                    navController.popBackStack()
+                },
                 onDismissMenu = {
                     showMenu = false
                 },

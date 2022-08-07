@@ -27,7 +27,7 @@ fun TopBar(
     showMenu: Boolean,
     titleTopBar: String,
     navigationType: Constants.NavType,
-    navController: NavHostController,
+    goBackToMain: () -> Unit,
     modifier: Modifier = Modifier,
     onDismissMenu: () -> Unit,
     onMenuIconClick: () -> Unit,
@@ -52,7 +52,7 @@ fun TopBar(
                         modifier = Modifier
                             .padding(end = 12.dp)
                             .clickable {
-                                navController.popBackStack()
+                                goBackToMain()
                             },
                         imageVector = Icons.Filled.ArrowBack,
                         contentDescription = "Go back to main",
