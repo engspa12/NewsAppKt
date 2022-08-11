@@ -1,8 +1,8 @@
 package com.example.newsappjetpackcompose.di
 
 import android.content.Context
-import com.example.newsappjetpackcompose.util.Validator
-import com.example.newsappjetpackcompose.util.ValidatorImpl
+import com.example.newsappjetpackcompose.util.ConnectionChecker
+import com.example.newsappjetpackcompose.util.ConnectionCheckerImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,10 +11,10 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NewsValidatorModule {
+object NewsCheckerModule {
 
     @Provides
-    fun provideValidator(@ApplicationContext appContext: Context): Validator {
-        return ValidatorImpl(appContext)
+    fun provideConnectionChecker(@ApplicationContext appContext: Context): ConnectionChecker {
+        return ConnectionCheckerImpl(appContext)
     }
 }

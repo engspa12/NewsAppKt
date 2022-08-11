@@ -1,6 +1,6 @@
 package com.example.newsappjetpackcompose.util
 
-interface Validator {
+interface ConnectionChecker {
 
     fun isOnline(): Boolean
     fun isEmptyString(inputString: String): Boolean

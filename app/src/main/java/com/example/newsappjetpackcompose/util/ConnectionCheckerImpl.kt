@@ -6,9 +6,9 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import javax.inject.Inject
 
-class ValidatorImpl @Inject constructor(
+class ConnectionCheckerImpl @Inject constructor(
     private val context: Context
-): Validator {
+): ConnectionChecker {
 
     override fun isOnline(): Boolean {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
