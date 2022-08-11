@@ -21,7 +21,7 @@ class NewsViewModel @Inject constructor(
 
     private var subscription: Disposable? = null
 
-    private val _uiState = MutableStateFlow<ArticlesUIState>(ArticlesUIState.Loading(StringWrapper.ResourceString(id = R.string.loading_news_message)))
+    private val _uiState = MutableStateFlow<ArticlesUIState>(ArticlesUIState.Loading(StringWrapper.ResourceStringWrapper(id = R.string.loading_news_message)))
     val uiState: StateFlow<ArticlesUIState>
         get() = _uiState
 
@@ -39,7 +39,7 @@ class NewsViewModel @Inject constructor(
                     }
                 }
             },{ e ->
-                _uiState.value = ArticlesUIState.Error(StringWrapper.ResourceString(id = R.string.error_data_retrieval))
+                _uiState.value = ArticlesUIState.Error(StringWrapper.ResourceStringWrapper(id = R.string.error_data_retrieval))
             })
     }
 

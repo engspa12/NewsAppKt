@@ -18,18 +18,18 @@ class NewsServiceImpl @Inject constructor(
         return if(validator.isOnline()) {
             newsInteractor.getNews(searchTerm, searchType)
         } else {
-            val result: ResultWrapper<List<ArticleView>> = ResultWrapper.Failure(StringWrapper.ResourceString(id = R.string.no_internet_connection))
+            val result: ResultWrapper<List<ArticleView>> = ResultWrapper.Failure(StringWrapper.ResourceStringWrapper(id = R.string.no_internet_connection))
             Observable.just(result)
         }
     }
 
     override fun checkInputSearch(inputString: String): ResultWrapper<StringWrapper> {
         return if(validator.isEmptyString(inputString)){
-            ResultWrapper.Failure(StringWrapper.ResourceString(id = R.string.error_empty_input))
+            ResultWrapper.Failure(StringWrapper.ResourceStringWrapper(id = R.string.error_empty_input))
         } else if(validator.isLessThanThreeCharacters(inputString)) {
-            ResultWrapper.Failure(StringWrapper.ResourceString(id = R.string.error_not_enough_characters))
+            ResultWrapper.Failure(StringWrapper.ResourceStringWrapper(id = R.string.error_not_enough_characters))
         } else {
-            ResultWrapper.Success(StringWrapper.SimpleString("Input is valid"))
+            ResultWrapper.Success(StringWrapper.SimpleStringWrapper("Input is valid"))
         }
     }
 
