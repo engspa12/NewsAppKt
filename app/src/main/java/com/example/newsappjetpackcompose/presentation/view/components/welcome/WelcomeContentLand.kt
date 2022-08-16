@@ -4,17 +4,21 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -26,6 +30,7 @@ import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.global.Constants
 import com.example.newsappjetpackcompose.presentation.view.theme.NewsAppKtTheme
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun WelcomeContentLand(
     searchType: String,
@@ -34,6 +39,8 @@ fun WelcomeContentLand(
     onSearchButtonClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val keyboardController = LocalSoftwareKeyboardController.current
+
     Column(
         modifier = modifier
     ) {
@@ -102,7 +109,13 @@ fun WelcomeContentLand(
                 },
                 keyboardOptions = KeyboardOptions.Default.copy(
                     capitalization = KeyboardCapitalization.Words,
-                    keyboardType = KeyboardType.Text
+                    keyboardType = KeyboardType.Text,
+                    imeAction = ImeAction.Done
+                ),
+                keyboardActions = KeyboardActions(
+                    onDone = {
+                        keyboardController?.hide()
+                    }
                 ),
                 colors = TextFieldDefaults.textFieldColors(
                     backgroundColor = colorResource(id = R.color.welcome_background),

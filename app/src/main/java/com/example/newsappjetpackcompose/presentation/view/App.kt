@@ -92,7 +92,7 @@ fun App(
                                     )
                                 }
                             } else {
-                                navController.navigate(Screen.ArticlesScreen.withArgs(searchInput, searchType))
+                                navController.navigate(Screen.ArticlesScreen.withArgs(searchInput.trim(), searchType))
                             }
                         }
                     )
