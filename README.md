@@ -2,15 +2,15 @@
 
 #### NewsAppKt is an Android app designed for searching news using TheGuardianOpenPlatform public web service.
 
-#### The app allows you to browse for news of any topics. It will display details about news articles such as the headline, release date, author, and section. A thumbnail image will be used as well to give you insight about the articles. Additionally, you can click on any item in the list to read the complete article at TheGuardian website.
+#### NewsAppKt enables users to browse for news on any topic by offering details about diverse articles, such as their headline, release date, author, and section. A thumbnail image is displayed to deliver insight into the articles. In addition, users can read the corresponding news report, on TheGuardian website, by tapping on any item in the results list.
 
 </br>
 
-<img src="https://images2.imgbox.com/f4/a9/9bWJwrJM_o.png" width="375" height="725"><img height="725" hspace="20"/><img src="https://images2.imgbox.com/ff/a6/Uv7NyBx6_o.png" width="375" height="725">
+<img src="https://images2.imgbox.com/ad/c5/cu69oMgT_o.png" width="375" height="725"><img height="725" hspace="20"/><img src="https://images2.imgbox.com/6f/0b/y6T7mRoa_o.png" width="375" height="725">
 <img width="770" vspace="20"/>
-<img src="https://images2.imgbox.com/09/9b/UxKjIQ73_o.png" width="375" height="725"><img height="725" hspace="20"/><img src="https://images2.imgbox.com/11/d6/meP60SQM_o.png" width="375" height="726">
+<img src="https://images2.imgbox.com/2f/22/5Fx676y9_o.png" width="375" height="725"><img height="725" hspace="20"/><img src="https://images2.imgbox.com/8c/92/ot0JaqvC_o.png" width="375" height="726">
 <img width="770" vspace="20"/>
-<img src="https://images2.imgbox.com/85/cd/rsURKSJA_o.png" width="375" height="725"><img height="725" hspace="20"/><img src="https://images2.imgbox.com/02/cf/ngQcetaQ_o.png" width="375" height="726">
+<img src="https://images2.imgbox.com/a4/0c/T7M8CEBK_o.png" width="375" height="725"><img height="725" hspace="20"/><img src="https://images2.imgbox.com/26/e7/tGbnZpaT_o.png" width="375" height="726">
 
 ## Getting Started
 
@@ -18,7 +18,7 @@
 
 ## Prerequisites
 
-#### NewsAppKt was developed using Android Studio IDE so you must install it in your computer before proceeding:
+#### NewsAppKt was developed using Android Studio IDE, so you must install it on your computer before proceeding:
 
 ###### https://developer.android.com/studio/
 
