@@ -7,5 +7,5 @@ import io.reactivex.Observable
 
 interface NewsService {
     fun getNews(searchTerm: String, searchType: String): Observable<ResultWrapper<List<ArticleView>>>
-    fun checkInputSearch(inputString: String): ResultWrapper<StringWrapper>
+    fun checkInputSearch(inputString: String): ResultWrapper<Unit>
 }

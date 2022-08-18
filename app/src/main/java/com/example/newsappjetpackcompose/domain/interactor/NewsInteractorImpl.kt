@@ -23,14 +23,14 @@ class NewsInteractorImpl @Inject constructor(
             }
 
             val result: ResultWrapper<List<ArticleView>> = if (listViewItems.isEmpty()) {
-                ResultWrapper.Failure(StringWrapper.ResourceStringWrapper(id = R.string.no_articles_found_message))
+                ResultWrapper.Failure(errorMessage = StringWrapper.ResourceStringWrapper(id = R.string.no_articles_found_message))
             } else {
                 ResultWrapper.Success(listViewItems)
             }
 
             Observable.just(result)
         }.onErrorReturn {
-            ResultWrapper.Failure(StringWrapper.ResourceStringWrapper(id = R.string.error_data_retrieval))
+            ResultWrapper.Failure(errorMessage = StringWrapper.ResourceStringWrapper(id = R.string.error_data_retrieval))
         }
     }
 }
