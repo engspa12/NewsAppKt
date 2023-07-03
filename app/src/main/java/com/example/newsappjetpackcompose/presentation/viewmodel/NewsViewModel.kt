@@ -38,7 +38,7 @@ class NewsViewModel @Inject constructor(
                         _uiState.value = ArticlesUIState.Error(result.errorMessage)
                     }
                 }
-            },{ e ->
+            },{ _ ->
                 _uiState.value = ArticlesUIState.Error(StringWrapper.ResourceStringWrapper(id = R.string.error_data_retrieval))
             })
     }
