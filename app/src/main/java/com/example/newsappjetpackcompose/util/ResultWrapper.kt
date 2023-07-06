@@ -1,6 +1,6 @@
 package com.example.newsappjetpackcompose.util
 
-sealed class ResultWrapper<T>{
-    data class Success<T>(val value: T): ResultWrapper<T>()
-    data class Failure<T>(val errorMessage: StringWrapper = StringWrapper.SimpleStringWrapper("")): ResultWrapper<T>()
+sealed class ResultWrapper<out T,out U>{
+    data class Success<T>(val value: T): ResultWrapper<T, Nothing>()
+    data class Failure<U>(val error: U): ResultWrapper<Nothing, U>()
 }
