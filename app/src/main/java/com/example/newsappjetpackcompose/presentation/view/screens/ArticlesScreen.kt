@@ -13,8 +13,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.presentation.state.ArticlesUIState
+import com.example.newsappjetpackcompose.presentation.util.mapToStringResource
 import com.example.newsappjetpackcompose.presentation.view.components.news.ArticlesList
 import com.example.newsappjetpackcompose.presentation.view.components.news.ErrorIndicator
 import com.example.newsappjetpackcompose.presentation.view.components.news.ProgressBar
@@ -35,11 +38,11 @@ fun ArticlesScreen(
         viewModel.getNews(searchInput, searchType)
     }
 
-    when(uiState) {
+    when(val state = uiState) {
         is ArticlesUIState.Success -> {
             ArticlesList(
                 lazyState = lazyState,
-                list = uiState.value
+                list = state.value
             ) { articleURL ->
                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(articleURL))
                 if (intent.resolveActivity(context.packageManager) != null) {
@@ -49,15 +52,15 @@ fun ArticlesScreen(
         }
         is ArticlesUIState.Loading -> {
             ProgressBar(
-                message = uiState.loadingMessage.asString(),
+                message = stringResource(id = R.string.loading_news_message),
                 modifier = Modifier
                     .fillMaxSize()
                     .wrapContentHeight(Alignment.CenterVertically)
             )
         }
-        is ArticlesUIState.Error -> {
+        is ArticlesUIState.GenericError, ArticlesUIState.NoConnectionError, ArticlesUIState.NoArticlesFoundError  -> {
             ErrorIndicator(
-                errorMessage = uiState.errorMessage.asString(),
+                errorMessage = stringResource(id = state.mapToStringResource()),
                 modifier = Modifier
                     .fillMaxSize()
                     .wrapContentHeight(Alignment.CenterVertically)

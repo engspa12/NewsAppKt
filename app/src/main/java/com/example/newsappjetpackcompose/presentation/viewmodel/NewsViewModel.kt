@@ -1,11 +1,10 @@
 package com.example.newsappjetpackcompose.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.domain.service.NewsService
+import com.example.newsappjetpackcompose.domain.util.NewsResponseError
 import com.example.newsappjetpackcompose.presentation.state.ArticlesUIState
 import com.example.newsappjetpackcompose.util.ResultWrapper
-import com.example.newsappjetpackcompose.util.StringWrapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -21,7 +20,7 @@ class NewsViewModel @Inject constructor(
 
     private var subscription: Disposable? = null
 
-    private val _uiState = MutableStateFlow<ArticlesUIState>(ArticlesUIState.Loading(StringWrapper.ResourceStringWrapper(id = R.string.loading_news_message)))
+    private val _uiState = MutableStateFlow<ArticlesUIState>(ArticlesUIState.Loading)
     val uiState: StateFlow<ArticlesUIState>
         get() = _uiState
 
@@ -35,17 +34,25 @@ class NewsViewModel @Inject constructor(
                         _uiState.value = ArticlesUIState.Success(result.value)
                     }
                     is ResultWrapper.Failure -> {
-                        _uiState.value = ArticlesUIState.Error(result.errorMessage)
+                        processError(result.error)
                     }
                 }
-            },{ _ ->
-                _uiState.value = ArticlesUIState.Error(StringWrapper.ResourceStringWrapper(id = R.string.error_data_retrieval))
+            },{
+                _uiState.value = ArticlesUIState.GenericError
             })
+    }
+
+    private fun processError(error: NewsResponseError) {
+        _uiState.value = when(error){
+            NewsResponseError.GENERIC_ERROR -> ArticlesUIState.GenericError
+            NewsResponseError.NO_INTERNET_CONNECTION -> ArticlesUIState.NoConnectionError
+            NewsResponseError.NO_ARTICLES_FOUND_WITH_SEARCH_TERM -> ArticlesUIState.NoArticlesFoundError
+        }
     }
 
     private fun rxJavaUnsubscribe() {
         if(subscription != null && !subscription!!.isDisposed){
-            subscription!!.dispose();
+            subscription!!.dispose()
         }
     }
 

@@ -11,7 +11,8 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import com.example.newsappjetpackcompose.R
-import com.example.newsappjetpackcompose.presentation.state.WelcomeUIState
+import com.example.newsappjetpackcompose.presentation.state.InputValidationResult
+import com.example.newsappjetpackcompose.presentation.util.mapToStringResource
 import com.example.newsappjetpackcompose.presentation.view.components.welcome.WelcomeContent
 import com.example.newsappjetpackcompose.presentation.view.components.welcome.WelcomeContentLand
 import com.example.newsappjetpackcompose.presentation.viewmodel.WelcomeViewModel
@@ -36,13 +37,13 @@ fun WelcomeScreen(
                 },
                 onSearchButtonClicked = {
                     when(val validation = viewModel.validateInput(searchInput)){
-                        is WelcomeUIState.Success -> {
+                        is InputValidationResult.Success -> {
                             onSearchButtonClicked(false, "")
                         }
-                        is WelcomeUIState.Error -> {
+                        is InputValidationResult.EmptyInputError, InputValidationResult.NotEnoughCharactersError -> {
                             onSearchButtonClicked(
                                 true,
-                                context.getString(validation.errorMessage.getStringIdResource() ?: R.string.error_generic)
+                                context.getString(validation.mapToStringResource())
                             )
                         }
                     }
@@ -63,13 +64,13 @@ fun WelcomeScreen(
                 },
                 onSearchButtonClicked = {
                     when(val validation = viewModel.validateInput(searchInput)){
-                        is WelcomeUIState.Success -> {
+                        is InputValidationResult.Success -> {
                             onSearchButtonClicked(false, "")
                         }
-                        is WelcomeUIState.Error -> {
+                        is InputValidationResult.EmptyInputError, InputValidationResult.NotEnoughCharactersError -> {
                             onSearchButtonClicked(
                                 true,
-                                context.getString(validation.errorMessage.getStringIdResource() ?: R.string.error_generic)
+                                context.getString(validation.mapToStringResource())
                             )
                         }
                     }

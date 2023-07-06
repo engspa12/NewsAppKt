@@ -2,8 +2,20 @@ package com.example.newsappjetpackcompose.presentation.view.components.shared
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.material.DropdownMenu
+import androidx.compose.material.DropdownMenuItem
+import androidx.compose.material.Icon
+import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
@@ -17,7 +29,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.global.Constants
 
@@ -55,7 +66,7 @@ fun TopBar(
                                 goBackToMain()
                             },
                         imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = "Go back to main",
+                        contentDescription = stringResource(R.string.go_back_to_main),
                         tint = MaterialTheme.colors.onSecondary
                     )
                 }
@@ -94,7 +105,7 @@ fun TopBar(
                                     onMenuIconClick()
                                 },
                             imageVector = Icons.Filled.MoreVert,
-                            contentDescription = "More options",
+                            contentDescription = stringResource(R.string.more_options),
                             tint = MaterialTheme.colors.onSecondary
                         )
 
