@@ -30,4 +30,6 @@
     <string name="loading_news_message">Loading News…</string>
     <string name="error_empty_input">Please enter a word before pressing the button</string>
     <string name="error_not_enough_characters">Please enter at least 3 characters</string>
+    <string name="go_back_to_main">Go back to main</string>
+    <string name="more_options">More options</string>
 </resources>
