@@ -4,8 +4,6 @@
 
 #### NewsAppKt enables users to browse for news on any topic by offering details about diverse articles, such as their headline, release date, author, and section. A thumbnail image is displayed to deliver insight into the articles. In addition, users can read the corresponding news report, on TheGuardian website, by tapping on any item in the results list.
 
-</br>
-
 <img src="https://images2.imgbox.com/ad/c5/cu69oMgT_o.png" width="375" height="725"><img height="725" hspace="20"/><img src="https://images2.imgbox.com/6f/0b/y6T7mRoa_o.png" width="375" height="725">
 <img width="770" vspace="20"/>
 <img src="https://images2.imgbox.com/2f/22/5Fx676y9_o.png" width="375" height="725"><img height="725" hspace="20"/><img src="https://images2.imgbox.com/8c/92/ot0JaqvC_o.png" width="375" height="726">
