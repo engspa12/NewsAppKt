@@ -20,11 +20,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.unit.sp
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.presentation.model.ArticleView
+import com.example.newsappjetpackcompose.presentation.view.theme.fontSize
 import com.example.newsappjetpackcompose.presentation.view.theme.spacing
 import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.glide.GlideImage
@@ -73,7 +73,7 @@ fun ArticleItem(
         ) {
             Text(
                 text = articleView.title,
-                fontSize = 14.sp,
+                fontSize = MaterialTheme.fontSize.size14,
                 style = MaterialTheme.typography.h4)
             Spacer(
                 modifier = Modifier
@@ -81,7 +81,7 @@ fun ArticleItem(
             )
             Text(
                 text = articleView.author,
-                fontSize = 12.sp,
+                fontSize = MaterialTheme.fontSize.size12,
                 style = MaterialTheme.typography.h3
             )
             Row(modifier = Modifier
@@ -90,12 +90,12 @@ fun ArticleItem(
                 verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     text = articleView.releaseDate,
-                    fontSize = 10.sp,
+                    fontSize = MaterialTheme.fontSize.size10,
                     style = MaterialTheme.typography.h1
                 )
                 Text(
                     text = articleView.sectionName,
-                    fontSize = 10.sp,
+                    fontSize = MaterialTheme.fontSize.size10,
                     style = MaterialTheme.typography.h4
                 )
             }

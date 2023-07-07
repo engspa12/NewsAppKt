@@ -27,9 +27,9 @@ import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.LineHeightStyle
-import androidx.compose.ui.unit.sp
 import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.global.Constants
+import com.example.newsappjetpackcompose.presentation.view.theme.fontSize
 import com.example.newsappjetpackcompose.presentation.view.theme.spacing
 
 @OptIn(ExperimentalTextApi::class)
@@ -74,11 +74,11 @@ fun TopBar(
             Text(
                 modifier = Modifier.wrapContentHeight(),
                 text = titleTopBar,
-                fontSize = 22.sp,
+                fontSize = MaterialTheme.fontSize.size22,
                 color = MaterialTheme.colors.onSecondary,
                 style = LocalTextStyle.current.merge(
                     TextStyle(
-                        lineHeight = 22.sp,
+                        lineHeight = MaterialTheme.fontSize.size22,
                         platformStyle = PlatformTextStyle(
                             includeFontPadding = false
                         ),

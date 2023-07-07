@@ -29,9 +29,9 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.sp
 import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.global.Constants
+import com.example.newsappjetpackcompose.presentation.view.theme.fontSize
 import com.example.newsappjetpackcompose.presentation.view.theme.spacing
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -52,7 +52,7 @@ fun WelcomeContent(
     ) {
         item {
             Text(
-                fontSize = 30.sp,
+                fontSize = MaterialTheme.fontSize.size30,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.W800,
                 fontStyle = FontStyle.Italic,
@@ -69,7 +69,7 @@ fun WelcomeContent(
         }
         item {
             Text(
-                fontSize = 20.sp,
+                fontSize = MaterialTheme.fontSize.size20,
                 textAlign = TextAlign.Center,
                 fontStyle = FontStyle.Italic,
                 color = colorResource(id = R.color.white),
@@ -85,14 +85,14 @@ fun WelcomeContent(
                     .padding(horizontal = MaterialTheme.spacing.dimen40),
                 textStyle = TextStyle(
                     color = colorResource(id = R.color.text_color_edit_text),
-                    fontSize = 28.sp,
+                    fontSize = MaterialTheme.fontSize.size28,
                     textAlign = TextAlign.Center
                 ),
                 placeholder = {
                     Text(
                         text = stringResource(id = R.string.search_hint),
                         color = colorResource(id = R.color.text_color_hint_edit_text),
-                        fontSize = 28.sp,
+                        fontSize = MaterialTheme.fontSize.size28,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -129,14 +129,14 @@ fun WelcomeContent(
                 if(searchType == Constants.RELEVANCE_SEARCH_TYPE)
                     Text(
                         text = stringResource(id = R.string.search_relevant_news_text),
-                        fontSize = 20.sp,
+                        fontSize = MaterialTheme.fontSize.size20,
                         fontStyle = FontStyle.Italic,
                         color = colorResource(id = R.color.white)
                     )
                 else
                     Text(
                         text = stringResource(id = R.string.search_latest_news_text),
-                        fontSize = 20.sp,
+                        fontSize = MaterialTheme.fontSize.size20,
                         fontStyle = FontStyle.Italic,
                         color = colorResource(id = R.color.white)
                     )

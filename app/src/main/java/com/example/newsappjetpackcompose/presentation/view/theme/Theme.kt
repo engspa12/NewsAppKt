@@ -46,7 +46,9 @@ fun NewsAppKtTheme(
         LightColorPalette
     }
 
-    CompositionLocalProvider(LocalSpacing provides Spacing()) {
+    CompositionLocalProvider(
+        LocalSpacing provides Spacing(),
+        LocalFontSize provides FontSize()) {
         MaterialTheme(
             colors = colors,
             typography = Typography,
