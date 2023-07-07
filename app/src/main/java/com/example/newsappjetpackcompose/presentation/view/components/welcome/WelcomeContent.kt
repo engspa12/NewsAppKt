@@ -10,6 +10,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
@@ -28,10 +29,10 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.global.Constants
+import com.example.newsappjetpackcompose.presentation.view.theme.spacing
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -63,7 +64,7 @@ fun WelcomeContent(
             Image(
                 painter = painterResource(id = R.drawable.daily_news),
                 contentDescription = stringResource(id = R.string.welcome_image_content_description),
-                modifier = Modifier.requiredSize(width = 250.dp, height = 150.dp)
+                modifier = Modifier.requiredSize(width = MaterialTheme.spacing.dimen250, height = MaterialTheme.spacing.dimen150)
             )
         }
         item {
@@ -73,7 +74,7 @@ fun WelcomeContent(
                 fontStyle = FontStyle.Italic,
                 color = colorResource(id = R.color.white),
                 text = stringResource(id = R.string.welcome_message),
-                modifier = Modifier.padding(horizontal = 28.dp)
+                modifier = Modifier.padding(horizontal = MaterialTheme.spacing.dimen28)
             )
         }
         item {
@@ -81,7 +82,7 @@ fun WelcomeContent(
                 value = searchInput,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 40.dp),
+                    .padding(horizontal = MaterialTheme.spacing.dimen40),
                 textStyle = TextStyle(
                     color = colorResource(id = R.color.text_color_edit_text),
                     fontSize = 28.sp,

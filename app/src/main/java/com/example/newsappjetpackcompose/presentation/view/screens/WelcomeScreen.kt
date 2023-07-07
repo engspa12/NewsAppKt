@@ -5,16 +5,17 @@ import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.unit.dp
 import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.presentation.state.InputValidationResult
 import com.example.newsappjetpackcompose.presentation.util.mapToStringResource
 import com.example.newsappjetpackcompose.presentation.view.components.welcome.WelcomeContent
 import com.example.newsappjetpackcompose.presentation.view.components.welcome.WelcomeContentLand
+import com.example.newsappjetpackcompose.presentation.view.theme.spacing
 import com.example.newsappjetpackcompose.presentation.viewmodel.WelcomeViewModel
 
 @Composable
@@ -52,7 +53,7 @@ fun WelcomeScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(colorResource(id = R.color.welcome_background))
-                    .padding(horizontal = 20.dp)
+                    .padding(horizontal = MaterialTheme.spacing.dimen20)
             )
         }
         else -> {
@@ -78,7 +79,7 @@ fun WelcomeScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(colorResource(id = R.color.welcome_background))
-                    .padding(horizontal = 20.dp)
+                    .padding(horizontal = MaterialTheme.spacing.dimen20)
             )
         }
     }

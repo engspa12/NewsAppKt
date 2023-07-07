@@ -9,7 +9,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import com.example.newsappjetpackcompose.presentation.view.theme.spacing
 
 @Composable
 fun ProgressBar(
@@ -23,13 +23,13 @@ fun ProgressBar(
             color = MaterialTheme.colors.primaryVariant,
             modifier = Modifier
                 .align(alignment = Alignment.CenterHorizontally)
-                .requiredSize(50.dp)
+                .requiredSize(MaterialTheme.spacing.dimen50)
         )
         Text(
             text = message,
             color = MaterialTheme.colors.primaryVariant,
             modifier =
-            Modifier.padding(vertical = 16.dp)
+            Modifier.padding(vertical = MaterialTheme.spacing.dimen16)
                 .align(alignment = Alignment.CenterHorizontally)
         )
     }

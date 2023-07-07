@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -14,13 +15,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.presentation.state.ArticlesUIState
 import com.example.newsappjetpackcompose.presentation.util.mapToStringResource
 import com.example.newsappjetpackcompose.presentation.view.components.news.ArticlesList
 import com.example.newsappjetpackcompose.presentation.view.components.news.ErrorIndicator
 import com.example.newsappjetpackcompose.presentation.view.components.news.ProgressBar
+import com.example.newsappjetpackcompose.presentation.view.theme.spacing
 import com.example.newsappjetpackcompose.presentation.viewmodel.NewsViewModel
 
 @Composable
@@ -64,7 +65,7 @@ fun ArticlesScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .wrapContentHeight(Alignment.CenterVertically)
-                    .padding(horizontal = 20.dp)
+                    .padding(horizontal = MaterialTheme.spacing.dimen20)
             )
         }
     }

@@ -20,12 +20,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.presentation.model.ArticleView
+import com.example.newsappjetpackcompose.presentation.view.theme.spacing
 import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.glide.GlideImage
 
@@ -59,17 +59,17 @@ fun ArticleItem(
             contentScale = ContentScale.FillBounds,
             modifier = Modifier
                 .fillMaxHeight()
-                .requiredWidth(width = 120.dp)
+                .requiredWidth(width = MaterialTheme.spacing.dimen120)
                 .background(color = MaterialTheme.colors.onSurface)
-                .padding(4.dp),
+                .padding(MaterialTheme.spacing.dimen4),
             error = ImageBitmap.imageResource(R.drawable.no_image_available)
         )
         Column(
             modifier = Modifier
                 .fillMaxHeight()
                 .background(color = MaterialTheme.colors.surface)
-                .border(width = 4.dp, color = MaterialTheme.colors.onSurface)
-                .padding(8.dp)
+                .border(width = MaterialTheme.spacing.dimen4, color = MaterialTheme.colors.onSurface)
+                .padding(MaterialTheme.spacing.dimen8)
         ) {
             Text(
                 text = articleView.title,

@@ -35,11 +35,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.global.Constants
 import com.example.newsappjetpackcompose.presentation.view.theme.NewsAppKtTheme
+import com.example.newsappjetpackcompose.presentation.view.theme.spacing
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -59,7 +59,7 @@ fun WelcomeContentLand(
             fontSize = 30.sp,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 18.dp),
+                .padding(vertical = MaterialTheme.spacing.dimen18),
             textAlign = TextAlign.Center,
             fontWeight = FontWeight.W800,
             fontStyle = FontStyle.Italic,
@@ -85,7 +85,7 @@ fun WelcomeContentLand(
                 color = colorResource(id = R.color.white),
                 text = stringResource(id = R.string.welcome_message),
                 modifier = Modifier
-                    .padding(horizontal = 20.dp)
+                    .padding(horizontal = MaterialTheme.spacing.dimen20)
                     .weight(1f)
             )
         }
@@ -98,7 +98,7 @@ fun WelcomeContentLand(
             TextField(
                 value = searchInput,
                 modifier = Modifier
-                    .padding(horizontal = 30.dp)
+                    .padding(horizontal = MaterialTheme.spacing.dimen30)
                     .weight(1f),
                 textStyle = TextStyle(
                     color = colorResource(id = R.color.text_color_edit_text),
@@ -139,7 +139,7 @@ fun WelcomeContentLand(
                     onSearchButtonClicked()
                 },
                 modifier = Modifier
-                    .padding(horizontal = 30.dp)
+                    .padding(horizontal = MaterialTheme.spacing.dimen30)
                     .weight(1f),
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = colorResource(id = R.color.button_background)
@@ -184,7 +184,7 @@ fun WelcomeLand(){
                 modifier = Modifier
                     .fillMaxSize()
                     .background(colorResource(id = R.color.welcome_background))
-                    .padding(horizontal = 20.dp)
+                    .padding(horizontal = MaterialTheme.spacing.dimen20)
             )
         }
     }

@@ -6,12 +6,13 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.newsappjetpackcompose.presentation.model.ArticleView
 import com.example.newsappjetpackcompose.presentation.view.theme.NewsAppKtTheme
+import com.example.newsappjetpackcompose.presentation.view.theme.spacing
 
 @Composable
 fun ArticlesList(
@@ -29,7 +30,7 @@ fun ArticlesList(
                 articleView = articleView,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(140.dp)
+                    .height(MaterialTheme.spacing.dimen140)
             ) {
                 onItemClicked(articleView.webUrl)
             }

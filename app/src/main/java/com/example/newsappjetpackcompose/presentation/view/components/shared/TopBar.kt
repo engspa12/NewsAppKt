@@ -27,10 +27,10 @@ import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.LineHeightStyle
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.newsappjetpackcompose.R
 import com.example.newsappjetpackcompose.global.Constants
+import com.example.newsappjetpackcompose.presentation.view.theme.spacing
 
 @OptIn(ExperimentalTextApi::class)
 @Composable
@@ -47,8 +47,8 @@ fun TopBar(
     TopAppBar(
         backgroundColor = MaterialTheme.colors.primary,
         contentColor = MaterialTheme.colors.onSecondary,
-        contentPadding = PaddingValues(start = 18.dp),
-        elevation = 0.dp,
+        contentPadding = PaddingValues(start = MaterialTheme.spacing.dimen18),
+        elevation = MaterialTheme.spacing.dimen0,
         modifier = modifier
     ) {
         Row(
@@ -61,7 +61,7 @@ fun TopBar(
                 Constants.NavType.NAV_DETAILS -> {
                     Icon(
                         modifier = Modifier
-                            .padding(end = 12.dp)
+                            .padding(end = MaterialTheme.spacing.dimen12)
                             .clickable {
                                 goBackToMain()
                             },
@@ -93,13 +93,13 @@ fun TopBar(
             when (navigationType) {
                 Constants.NavType.NAV_MAIN -> {
                     Row(
-                        modifier = Modifier.padding(end = 4.dp),
+                        modifier = Modifier.padding(end = MaterialTheme.spacing.dimen4),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Icon(
                             modifier = Modifier
-                                .padding(top = 16.dp, bottom = 16.dp, end = 12.dp)
+                                .padding(top = MaterialTheme.spacing.dimen16, bottom = MaterialTheme.spacing.dimen16, end = MaterialTheme.spacing.dimen12)
                                 .clickable
                                 {
                                     onMenuIconClick()
